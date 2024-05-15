@@ -12,7 +12,6 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src='main.js'></script>
 </head>
 
 <body>
@@ -25,7 +24,7 @@
 
                 <!-- Logotipo -->
 
-                <div class="mx-auto">
+                <div class="mx-auto text-center">
                     <a href="">
                         <img class="img-fluid" src="img/logo.png" width="150" alt="Logotipo La Mesa Cuadrada">
                     </a>
@@ -37,10 +36,14 @@
                 <div>
                     <ul class="list-unstyled">
                         <li>
-                            <i class="bi bi-people"> Regístrate </i>
+                            <i class="bi bi-people">
+                                <span class="d-none d-lg-inline"> Regístrate </span>
+                            </i> 
                         </li>
                         <li>
-                            <i class="bi bi-globe-americas"> Idioma </i>
+                            <i class="bi bi-globe-americas"> 
+                                <span class="d-none d-lg-inline"> Idioma </span> 
+                            </i>
                         </li>
                     </ul>
                 </div>
@@ -48,10 +51,82 @@
         </div>
     </nav>
 
+    <!-- MIGAS DE PAN -->
+
+      <nav style="--bs-breadcrumb-divider: '🔴';" aria-label="Migas de pan"> <!-- Insertar entre las comillas simples ('') el tipo de separador deseado -->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"> Home </a></li>
+                <li class="breadcrumb-item active" aria-current="Página actual"> Library </li>
+              </ol>
+        </div>
+      </nav>
+
+    <!-- MAIN -->
+
+    <main>
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- COLUMNA IZQUIERDA  / REGISTRO -->
+    
+                <div class="col-lg-6 border border-start-0 border-top-0 border-bottom-0 order-1 order-lg-0"> <!-- Aquí se controla el borde separador de ambas columnas -->
+    
+                    <!-- Aquí va el registro -->
+
+                    <!-- Esto es una muestra. Lo que he utilizado es Image overlays de Bootstrap. Se requiere imagen vectorial para que quede bien en la versión móvil -->
+
+                    <div class="card text-bg-light">  
+                        <img src="img/fondo_columnaIzquierda.jpg" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                          <h5 class="card-title"> ¿Quieres guardar tu progreso? </h5>
+                          <p class="card-text"> 
+                                Deja de perder tus partidas.
+                                <br><br>
+                                Regístrate en menos de un minutos para poder jugar
+                                <br>
+                                torneos con amigos y llevar un registro de tus partidas.
+                            </p>
+                          <p class="card-text"><small> ¡Además es gratis! </small></p>
+
+                          <button type="button" class="btn btn-danger btn-lg"> ¡Regístrate! </button>
+                        </div>
+                      </div>
+                    
+                </div>
+    
+                <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
+    
+                <!-- COLUMNA DERECHA  / BUSCADOR -->
+    
+                <div class="col-lg-6 order-0 order-lg-0">
+    
+                    <h1 id="tituloBuscador"> ¿A qué te apetece jugar hoy? </h1>
+    
+                    <form class="d-flex" method="get" action="#">
+                        <input class="form-control form-control-lg rounded-pill" id="buscador" type="search" placeholder="o(￣▽￣)/" aria-label="Buscar">
+                        <button class="btn btn-outline-danger rounded-pill" type="submit"> Buscar </button>
+                    </form>
+    
+                </div>
+    
+            </div>
+
+        </div>
+
+    </main>
+    
+
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src='js/main.js'></script>
+
 </body>
 
 </html>

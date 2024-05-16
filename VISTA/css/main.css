@@ -1,0 +1,66 @@
+
+/* 
+    Created on : may 2024
+    Author     : Adrián
+*/
+
+.prueba {
+    border-style: dotted;
+    border-color: black;
+    border-width: 3px;
+}
+
+/* Estilos para el campo de búsqueda */
+.form-control-lg {
+    padding: 1rem;
+    /* Aumenta el padding interno */
+    font-size: 1.2rem;
+    /* Aumenta el tamaño de la fuente */
+}
+
+/* Estilos para el botón */
+.btn-outline-success {
+    border-width: 2px;
+    /* Hace el borde más grueso */
+}
+
+/* -------------- ANIMACIONES -------------------- */
+
+/* Animación título del buscador */
+
+#tituloBuscador {
+    opacity: 0.10;
+    /* Inicialmente oculto */
+    transform: translateX(15%);
+    /* Desplazado a la derecha */
+    transition: opacity 4s ease, transform 2s ease;
+    /* Transiciones suaves */
+}
+
+#tituloBuscador.show {
+    opacity: 1;
+    /* Visible */
+    transform: translateX(0);
+    /* En su posición final */
+}
+
+/* Animación del buscador */
+
+#buscador {
+    opacity: 0.30;
+    /* Inicialmente oculto */
+    transform: translateY(100%);
+    /* Desplazado a la derecha */
+    transition: opacity 4s ease, transform 2s ease;
+    /* Transiciones suaves */
+}
+
+#buscador.show {
+    opacity: 1;
+    /* Visible */
+    transform: translateY(0%);
+    /* En su posición final */
+}
+
+
+

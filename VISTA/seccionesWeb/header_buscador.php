@@ -25,12 +25,25 @@
 
                 <!-- Logotipo -->
 
-                <div class="mx-auto text-center">
+                <div class="text-center">
                     <a href="index.php?pagina=home">
                         <img class="img-fluid" src="VISTA/img/logo.png" width="150" alt="Logotipo La Mesa Cuadrada">
                     </a>
                     <P class="h5"> La Mesa Cuadrada </P>
                 </div>
+
+                <!-- Barra de búsqueda -->
+
+                <div class="col-lg-6 order-0 order-lg-0">
+
+                <h1 id="tituloBuscador"> ¿A qué te apetece jugar hoy? </h1>
+
+                <form class="d-flex" method="get" action="#">
+                    <input class="form-control form-control-lg rounded-pill" id="buscador" type="search" placeholder="o(￣▽￣)/" aria-label="Buscar">
+                    <button class="btn btn-outline-danger rounded-pill" type="submit"> Buscar </button>
+                </form>
+
+            </div>
 
                 <!-- Botón de Registro e Idioma para ESCRITORIO -->
 

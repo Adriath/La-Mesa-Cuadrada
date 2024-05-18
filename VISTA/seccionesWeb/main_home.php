@@ -115,7 +115,13 @@
                     <button class="btn btn-outline-danger rounded-pill" type="submit"> Buscar </button>
                 </form>
 
+
+                <a class="link-danger" href="index.php?pagina=buscador">
+                    <h3 class="mt-5"> Ir al buscador </h3>
+                </a>
             </div>
+
+            
 
         </div>
 

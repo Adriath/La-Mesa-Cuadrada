@@ -14,6 +14,10 @@ if ($metodo == 'GET') {
                 require_once 'VISTA/home.php';
                 break;
 
+            case "buscador":
+                require_once 'VISTA/buscador.php';
+                break;
+
             default:
                 break;
         }

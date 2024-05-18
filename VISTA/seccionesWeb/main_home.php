@@ -112,13 +112,17 @@
 
                 <form class="d-flex" method="get" action="#">
                     <input class="form-control form-control-lg rounded-pill" id="buscador" type="search" placeholder="o(￣▽￣)/" aria-label="Buscar">
-                    <button class="btn btn-outline-danger rounded-pill" type="submit"> Buscar </button>
+                    <button class="btn btn-outline-danger rounded-pill" id="botonBuscar" type="submit"> Buscar </button>
                 </form>
 
 
                 <a class="link-danger" href="index.php?pagina=buscador">
                     <h3 class="mt-5"> Ir al buscador </h3>
                 </a>
+
+                <p class="mt-5 areaPruebas">
+                    <!-- ÁREA DE PRUEBAS DE BUSCADOR -->
+                </p>
             </div>
 
             

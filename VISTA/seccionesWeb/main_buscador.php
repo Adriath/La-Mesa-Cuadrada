@@ -18,7 +18,7 @@
 
             <!-- BARRA LATERAL -->
 
-            <aside class="border-end col-3 ">
+            <aside class="border-end col-3">
 
                 <div class="col">
                     <h4 class="mb-3"> Tipo </h4>

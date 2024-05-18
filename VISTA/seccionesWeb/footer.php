@@ -59,6 +59,7 @@ crossorigin="anonymous"></script>
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src='VISTA/js/main.js'></script>
+<script src='VISTA/js/buscador.js'></script>
 
 </body>
 

@@ -1,8 +1,13 @@
 {
     "Tuki": [
-    ["Resultado 1"],
-    ["Resultado 2"],
-    ["Resultado 3"]
+        ["Resultado 1"],
+        ["Resultado 2"],
+        ["Resultado 3"]
+    ],
+    "Scattergories": [
+        ["Resultado 1"],
+        ["Resultado 2"],
+        ["Resultado 3"]
     ]
 
 }

@@ -78,7 +78,7 @@ function haceOtraCosa(datos, textoUsuario) {
 
     if (coincidenciaEncontrada) {
         
-        despliegaListaSugerencias() ;
+        despliegaListaSugerencias(datos) ;
     }
 
     else if (!coincidenciaEncontrada) {
@@ -99,24 +99,26 @@ function haceOtraCosa(datos, textoUsuario) {
     // document.getElementsByClassName("areaPruebas")[0].innerHTML = "Lo que ha introducido el usuario: " + textoUsuario ;
 }
 
-function despliegaListaSugerencias() {
+function despliegaListaSugerencias(datos) {
+    limpiaListaSugerencias();
 
-    limpiaListaSugerencias() ;
-    
     listaCoincidencias.forEach(element => {
-        
-        const linkItem = $('<a>', {
-            href: 'index.php?pagina=' + element.toLowerCase(),
-            class: 'list-group-item list-group-item-action',
-            text: element
-          });
-        
-          // Agregar el elemento <a> al div con id "sugerencias"
-          $('#sugerencias').append(linkItem);
+        const json = datos[element];
+        if (json && json[0] && json[0].enlace) {
+            const linkItem = $('<a>', {
+                href: "index.php?pagina=" + json[0].enlace,
+                class: 'list-group-item list-group-item-action',
+                text: element
+            });
+            
+            // Agregar el elemento <a> al div con id "sugerencias"
+            $('#sugerencias').append(linkItem);
+        }
     });
 
-    listaCoincidencias = [] ; // Limpia el array
+    listaCoincidencias = []; // Limpia el array
 }
+
 
 function limpiaListaSugerencias() {
     

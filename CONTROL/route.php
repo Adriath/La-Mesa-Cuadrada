@@ -18,6 +18,22 @@ if ($metodo == 'GET') {
                 require_once 'VISTA/buscador.php';
                 break;
 
+            case "tuki":
+                require_once 'VISTA/tuki.php';
+                break;
+
+            case "scattergories":
+                require_once 'VISTA/scattergories.php';
+                break;
+
+            case "tukistan":
+                require_once 'VISTA/tukistan.php';
+                break;
+
+            case "sushi_go":
+                require_once 'VISTA/sushiGo.php';
+                break;
+
             default:
                 break;
         }

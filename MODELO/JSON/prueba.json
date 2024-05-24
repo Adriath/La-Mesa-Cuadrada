@@ -1,18 +1,37 @@
 {
     "Tuki": [
-        ["Resultado 1"],
+        {"enlace": "tuki"},
         ["Resultado 2"],
         ["Resultado 3"]
     ],
     "Scattergories": [
-        ["Resultado 1"],
+        {"enlace": "scattergories"},
         ["Resultado 2"],
         ["Resultado 3"]
     ],
     "Carcasone": [
-        ["Resultado 1"],
+        {"enlace": "carcasone"},
+        ["Resultado 2"],
+        ["Resultado 3"]
+    ],
+    "Doubble": [
+        {"enlace": "doubble"},
+        ["Resultado 2"],
+        ["Resultado 3"]
+    ],
+    "Sushi Go": [
+        {"enlace": "sushi_go"},
+        ["Resultado 2"],
+        ["Resultado 3"]
+    ],
+    "Tukistán": [
+        {"enlace": "tukistan"},
+        ["Resultado 2"],
+        ["Resultado 3"]
+    ],
+    "Jaipur": [
+        {"enlace": "jaipur"},
         ["Resultado 2"],
         ["Resultado 3"]
     ]
-
 }

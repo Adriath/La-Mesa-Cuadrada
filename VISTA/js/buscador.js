@@ -4,6 +4,7 @@
 $(document).ready(function (){
 
     let textoUsuario = "" ;
+    let listaCoincidencias = [] ;
 
     // Hacer la solicitud AJAX para obtener los datos
     $.ajax({
@@ -20,7 +21,8 @@ $(document).ready(function (){
             // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
             $('#buscador').keyup(function () {
                 
-                textoUsuario = document.getElementById("buscador").value ;
+                // textoUsuario = document.getElementById("buscador").value ;
+                textoUsuario = $("#buscador").val() ;
                 console.log("textoUsuario: " + textoUsuario) ;
                 haceAlgo(response) ;
             })
@@ -53,20 +55,24 @@ function haceAlgo(datos) {
 function haceOtraCosa(datos, textoUsuario) {
 
     let coincidenciaEncontrada = false;
-    
+
     for (const categoria in datos) { // Itera sobre las categorías
         if (datos.hasOwnProperty(categoria)) {
             console.log(`Comparando: ${categoria.toLowerCase()} con ${textoUsuario.toLowerCase()}`);
             if (categoria.toLowerCase().includes(textoUsuario.toLowerCase())) {
                 console.log("Coincidencia encontrada en la categoría: " + categoria);
+                listaCoincidencias.push(categoria) ; // Guarda la coincidencia en el array
+                console.log("listaCoincidencias: " + listaCoincidencias) ;
                 coincidenciaEncontrada = true;
-                break; // Salir del bucle si se encuentra una coincidencia
+                // break; // Salir del bucle si se encuentra una coincidencia
             }
         }
     }
 
     if (!coincidenciaEncontrada) {
-        console.log("No hay coincidencias");
+        console.log("No hay coincidencias") ;
+        listaCoincidencias = [] ; // Limpia el array
+        console.log("listaCoincidencias: " + listaCoincidencias) ;
     }
        
     

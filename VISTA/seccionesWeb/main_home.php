@@ -116,9 +116,11 @@
                 </form>
 
 
-                <a class="link-danger" href="index.php?pagina=buscador">
-                    <h3 class="mt-5"> Ir al buscador </h3>
-                </a>
+                <div class="row">
+                    <a class="col-4 link-danger" href="index.php?pagina=buscador">
+                        <h3 class="mt-5 prueba"> Ir al buscador </h3>
+                    </a>
+                </div>
 
                 <p class="mt-5 areaPruebas">
                     <!-- ÁREA DE PRUEBAS DE BUSCADOR -->

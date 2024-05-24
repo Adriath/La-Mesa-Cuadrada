@@ -115,6 +115,19 @@
                     <button class="btn btn-outline-danger rounded-pill" id="botonBuscar" type="submit"> Buscar </button>
                 </form>
 
+                <!-- Lista de sugerencias -->
+
+                <div class="list-group" id="sugerencias">
+                    <!-- <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        The current link item
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                    <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a> -->
+                </div>
+
+                <!-- Ir al buscador (PRUEBAS)-->
 
                 <div class="row">
                     <a class="col-4 link-danger" href="index.php?pagina=buscador">

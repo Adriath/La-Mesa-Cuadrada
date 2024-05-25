@@ -110,7 +110,7 @@
 
                 <h1 id="tituloBuscador"> ¿A qué te apetece jugar hoy? </h1>
 
-                <form class="d-flex" method="get" action="#">
+                <form class="d-flex" method="get" action="#" id="formBuscador">
                     <input class="form-control form-control-lg rounded-pill" id="buscador" type="search" placeholder="o(￣▽￣)/" aria-label="Buscar">
                     <button class="btn btn-outline-danger rounded-pill" id="botonBuscar" type="submit"> Buscar </button>
                 </form>
@@ -131,7 +131,7 @@
 
                 <div class="row">
                     <a class="col-4 link-danger" href="index.php?pagina=buscador">
-                        <h3 class="mt-5 prueba"> Ir al buscador </h3>
+                        <h3 class="mt-5"> Ir al buscador </h3>
                     </a>
                 </div>
 

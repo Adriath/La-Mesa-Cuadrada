@@ -4,6 +4,7 @@
 
 let textoUsuario = "" ;
 let listaCoincidencias = [] ;
+let coincidenciaEncontrada = false ;
 
 $(document).ready(function (){
 
@@ -26,14 +27,16 @@ $(document).ready(function (){
                 textoUsuario = $("#buscador").val() ;
                 console.log("textoUsuario: " + textoUsuario) ;
                 // haceAlgo(response) ;
-                haceOtraCosa(response, textoUsuario) ;
+                muestraSugerencias(response, textoUsuario) ;
             })
             
-            $('#botonBuscar').click(function (event) {
+            $('#formBuscador').submit(function (event) {
                 event.preventDefault();
 
-                haceOtraCosa(response, textoUsuario) ;
+                haceAlgo() ;
+
             });
+
         },
         error: function (xhr, status, error) {
             // Manejar cualquier error que ocurra durante la solicitud
@@ -48,15 +51,15 @@ $(document).ready(function (){
     Al carcar el documento, mediante al Ajax se carga al json de prueba. A través de un escuchador de pulsación 
     hace algo. Ese algo será la comprobación de lo escrito con lo que hay en el json.*/
 
-function haceAlgo(datos) {
+function haceAlgo() {
     
-    console.log("Estoy dentro del Ajax") ;
-
+    window.location.href = 'http://localhost/La_Mesa_Cuadrada/index.php?pagina=buscador&resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
+    // ESTOY AQUÍ
 }
 
-function haceOtraCosa(datos, textoUsuario) {
+function muestraSugerencias(datos, textoUsuario) {
 
-    let coincidenciaEncontrada = false;
+    coincidenciaEncontrada = false;
 
     for (const categoria in datos) { // Itera sobre las categorías
         if (datos.hasOwnProperty(categoria)) {

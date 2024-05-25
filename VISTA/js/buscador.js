@@ -5,6 +5,7 @@
 let textoUsuario = "" ;
 let listaCoincidencias = [] ;
 let coincidenciaEncontrada = false ;
+let datosJSON ;
 
 $(document).ready(function (){
 
@@ -16,6 +17,9 @@ $(document).ready(function (){
         dataType: 'json',
 
         success: function (response) {
+
+            datosJSON = response ;
+            
             // Manejar la respuesta del servidor
             console.log('Datos recibidos:', response) ;
 
@@ -37,12 +41,18 @@ $(document).ready(function (){
 
             });
 
+            pintaCardResultado(response) ;
         },
         error: function (xhr, status, error) {
             // Manejar cualquier error que ocurra durante la solicitud
             console.error('Error al obtener los datos:', error);
         }
     });
+    
+    // $("#pruebaResultado").html("Texto desde JS");
+
+    // console.log("Contenido de datosJSON: " + datosJSON) ;
+
 });
 
 // ESTO VALDRÁ PARA LAS SUGERENCIAS
@@ -54,7 +64,6 @@ $(document).ready(function (){
 function haceAlgo() {
     
     window.location.href = 'http://localhost/La_Mesa_Cuadrada/index.php?pagina=buscador&resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
-    // ESTOY AQUÍ
 }
 
 function muestraSugerencias(datos, textoUsuario) {
@@ -125,9 +134,19 @@ function despliegaListaSugerencias(datos) {
 
 function limpiaListaSugerencias() {
     
-    const linkItem = ""
+    // const linkItem = ""
 
-    $('#sugerencias').html(linkItem) ;
+    // $('#sugerencias').html(linkItem) ;
+
+    // Forma más limpia:
+    $('#sugerencias').empty() ;
+}
+
+
+
+function pintaCardResultado(datos) {
+    
+    $("#pruebaResultado").html("El enlace es: " + datos["Tuki"][0].enlace);
 }
 
 

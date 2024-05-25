@@ -66,11 +66,9 @@
 
             <!-- CONTENIDO PRINCIPAL -->
 
-            <section class="col">
+            <section class="col" id="pruebaResultado">
 
-                <?php
-                    require_once 'CONTROL/respuesta_buscador.php' ;
-                ?>
+                <!-- AQUÍ VA LA RESPUESTA DE LA BÚSQUEDA -->
 
             </section>
 

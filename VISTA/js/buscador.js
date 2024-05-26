@@ -192,9 +192,9 @@ function pintaCardResultado(datos) {
         let imagen = json[2].imagen;
         let descripcion = json[3].descripcion;
 
-        card = $('<div>', { class: 'col mx-2' }).append(
+        card = $('<div>', { class: 'col mx-2 mb-3' }).append(
             $('<div>', { class: 'card', style: 'width: 12rem;' }).append(
-                $('<img>', { src: 'PAGINAS/img/' + imagen + '_card.png', class: 'card-img-top', alt: '...' }),
+                $('<img>', { src: 'VISTA/img/' + imagen, class: 'card-img-top', alt: nombre }),
                 $('<div>', { class: 'card-body' }).append(
                     $('<h5>', { class: 'card-title text-center' }).text(nombre),
                     $('<hr>', { class: 'text-danger' }),

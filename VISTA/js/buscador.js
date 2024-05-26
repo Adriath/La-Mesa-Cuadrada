@@ -155,6 +155,7 @@ function pintaCardResultado(datos) {
     
     let listaResultados = [] ;
     let textoGET = "" ;
+    let card ;
 
     $("#pruebaResultado").empty() ;
 
@@ -184,35 +185,26 @@ function pintaCardResultado(datos) {
 
 
     listaResultados.forEach(element => {
-        const json = datos[element];
-
-        console.log("Elemento: " + element) ;
+        let json = datos[element];
         
-        // const linkItem = $('<a>', {
-        //     href: "index.php?pagina=" + json[0].enlace,
-        //     class: 'list-group-item list-group-item-action',
-        //     text: element
-        // });
+        let enlace = json[0].enlace;
+        let nombre = json[1].nombre;
+        let imagen = json[2].imagen;
+        let descripcion = json[3].descripcion;
 
-        let card = $('<div>', { class: 'col mx-2' }).append(
+        card = $('<div>', { class: 'col mx-2' }).append(
             $('<div>', { class: 'card', style: 'width: 12rem;' }).append(
-                $('<img>', { src: 'PAGINAS/img/tuki_card.png', class: 'card-img-top', alt: '...' }),
+                $('<img>', { src: 'PAGINAS/img/' + imagen + '_card.png', class: 'card-img-top', alt: '...' }),
                 $('<div>', { class: 'card-body' }).append(
-                    $('<h5>', { class: 'card-title text-center' }).text('Tuki Tuki'),
+                    $('<h5>', { class: 'card-title text-center' }).text(nombre),
                     $('<hr>', { class: 'text-danger' }),
-                    $('<p>', { class: 'card-text' }).text('Some quick example text to build on the card title and make up the bulk of the card\'s content.'),
-                    $('<a>', { href: '#', class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
+                    $('<p>', { class: 'card-text' }).text(descripcion),
+                    $('<a>', { href: 'index.php?pagina=' + enlace, class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
                 )
             )
         );
 
-        // Añadir la tarjeta al contenedor
         $('#resultadoBusqueda').append(card);
-        
-        // Agregar el elemento <a> al div con id "sugerencias"
-        // $('#resultadoBusqueda').append(linkItem);
-        
-        
     });
 
 }

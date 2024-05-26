@@ -5,7 +5,7 @@
 let textoUsuario = "" ;
 let listaCoincidencias = [] ;
 let coincidenciaEncontrada = false ;
-let datosJSON ;
+let datosJSON ; // NO SE ESTÁ UTILIZANDO
 
 $(document).ready(function (){
 
@@ -18,30 +18,37 @@ $(document).ready(function (){
 
         success: function (response) {
 
-            datosJSON = response ;
+            console.log("ESTOY DENTRO DEL SUCCESS") ;
+
+            datosJSON = response ; // NO SE ESTÁ UTILIZANDO
             
             // Manejar la respuesta del servidor
             console.log('Datos recibidos:', response) ;
 
             // Por ejemplo, mostrar los datos en algún lugar de tu página
             // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
+            
+            $('#formBuscador').submit(function (event) {
+                event.preventDefault();
+                console.log("ESTOY DENTRO DEL EVENTO SUBMIT") ;
+                haceAlgo() ;
+                
+            });
+            
             $('#buscador').keyup(function () {
                 
+                console.log("ESTOY DENTRO DEL EVENTO DE KEYUP") ;
                 // textoUsuario = document.getElementById("buscador").value ;
                 textoUsuario = $("#buscador").val() ;
                 console.log("textoUsuario: " + textoUsuario) ;
                 // haceAlgo(response) ;
                 muestraSugerencias(response, textoUsuario) ;
             })
+
+            console.log("ESTOY DENTRO DEL SUCCESS PERO EN LA PARTE FINAL, DONDE ESTÁ EL PINTACARDRESULTADO") ;
             
-            $('#formBuscador').submit(function (event) {
-                event.preventDefault();
-
-                haceAlgo() ;
-
-            });
-
             pintaCardResultado(response) ;
+            
         },
         error: function (xhr, status, error) {
             // Manejar cualquier error que ocurra durante la solicitud
@@ -62,7 +69,7 @@ $(document).ready(function (){
     hace algo. Ese algo será la comprobación de lo escrito con lo que hay en el json.*/
 
 function haceAlgo() {
-    
+
     window.location.href = 'http://localhost/La_Mesa_Cuadrada/index.php?pagina=buscador&resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
 }
 
@@ -93,7 +100,7 @@ function muestraSugerencias(datos, textoUsuario) {
         despliegaListaSugerencias(datos) ;
     }
 
-    else if (!coincidenciaEncontrada) {
+    else if (!coincidenciaEncontrada) { // ESTO PODRÍA SER UN ELSE
         limpiaListaSugerencias() ;
         console.log("No hay coincidencias") ;
         listaCoincidencias = [] ; // Limpia el array
@@ -127,7 +134,7 @@ function despliegaListaSugerencias(datos) {
             $('#sugerencias').append(linkItem);
         }
     });
-
+    
     listaCoincidencias = []; // Limpia el array
 }
 
@@ -146,7 +153,50 @@ function limpiaListaSugerencias() {
 
 function pintaCardResultado(datos) {
     
+    let listaResultados = [] ;
+    let textoGET = "" ;
+
+    $("#pruebaResultado").empty() ;
+
     $("#pruebaResultado").html("El enlace es: " + datos["Tuki"][0].enlace);
+
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    textoGET = urlParams.get('resultado');
+    // console.log("El texto pasado por GET es: " + resultado); // Output: "texto"
+    
+    for (const categoria in datos) { // Itera sobre las categorías
+        if (datos.hasOwnProperty(categoria)) {
+            console.log(`Comparando: ${categoria.toLowerCase()} con ${textoGET.toLowerCase()}`);
+            
+            if (textoGET.trim() !== ""){
+                
+                if (categoria.toLowerCase().includes(textoGET.toLowerCase())) {
+                    
+                    console.log("Coincidencia encontrada en la categoría: " + categoria) ;
+                    listaResultados.push(categoria) ; // Guarda la coincidencia en el array
+                    console.log("listaCoincidencias: " + listaResultados) ;
+                }
+            }
+        }
+    }
+    console.log("Contenido de la lista de coincidencias: " + listaResultados) ;
+
+
+    listaResultados.forEach(element => {
+        const json = datos[element];
+        if (json && json[0] && json[0].enlace) {
+            const linkItem = $('<a>', {
+                href: "index.php?pagina=" + json[0].enlace,
+                class: 'list-group-item list-group-item-action',
+                text: element
+            });
+            
+            // Agregar el elemento <a> al div con id "sugerencias"
+            $('#pruebaResultado').append(linkItem);
+        }
+    });
+
 }
 
 

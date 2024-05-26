@@ -158,7 +158,7 @@ function pintaCardResultado(datos) {
 
     $("#pruebaResultado").empty() ;
 
-    $("#pruebaResultado").html("El enlace es: " + datos["Tuki"][0].enlace);
+    // $("#resultadoBusqueda").html("El enlace es: " + datos["Tuki"][0].enlace);
 
     
     const urlParams = new URLSearchParams(window.location.search);
@@ -185,20 +185,55 @@ function pintaCardResultado(datos) {
 
     listaResultados.forEach(element => {
         const json = datos[element];
-        if (json && json[0] && json[0].enlace) {
-            const linkItem = $('<a>', {
-                href: "index.php?pagina=" + json[0].enlace,
-                class: 'list-group-item list-group-item-action',
-                text: element
-            });
-            
-            // Agregar el elemento <a> al div con id "sugerencias"
-            $('#pruebaResultado').append(linkItem);
-        }
+
+        console.log("Elemento: " + element) ;
+        
+        // const linkItem = $('<a>', {
+        //     href: "index.php?pagina=" + json[0].enlace,
+        //     class: 'list-group-item list-group-item-action',
+        //     text: element
+        // });
+
+        let card = $('<div>', { class: 'col mx-2' }).append(
+            $('<div>', { class: 'card', style: 'width: 12rem;' }).append(
+                $('<img>', { src: 'PAGINAS/img/tuki_card.png', class: 'card-img-top', alt: '...' }),
+                $('<div>', { class: 'card-body' }).append(
+                    $('<h5>', { class: 'card-title text-center' }).text('Tuki Tuki'),
+                    $('<hr>', { class: 'text-danger' }),
+                    $('<p>', { class: 'card-text' }).text('Some quick example text to build on the card title and make up the bulk of the card\'s content.'),
+                    $('<a>', { href: '#', class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
+                )
+            )
+        );
+
+        // Añadir la tarjeta al contenedor
+        $('#resultadoBusqueda').append(card);
+        
+        // Agregar el elemento <a> al div con id "sugerencias"
+        // $('#resultadoBusqueda').append(linkItem);
+        
+        
     });
 
 }
 
+                // <div class="container d-flex justify-content-start">
+                //     <div class="row">
+
+                //         <div class="col mx-2">
+                //             <div class="card" style="width: 12rem;">
+                //                 <img src="PAGINAS/img/tuki_card.png" class="card-img-top" alt="...">
+                //                 <div class="card-body">
+                //                   <h5 class="card-title text-center"> Tuki Tuki </h5>
+                //                   <hr class="text-danger">
+                //                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                //                   <a href="#" class="btn btn-danger d-flex justify-content-center"> ¡Jugar! </a>
+                //                 </div>
+                //             </div>
+                //         </div>
+
+                //     </div>
+                // </div>
 
 // AHORA VOY A PROGRAMA EL COMPORTAMIENTO A PARTIR DEL BOTÓN SUBMIT
 

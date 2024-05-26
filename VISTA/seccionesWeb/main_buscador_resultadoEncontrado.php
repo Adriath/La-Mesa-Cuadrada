@@ -66,9 +66,15 @@
 
             <!-- CONTENIDO PRINCIPAL -->
 
-            <section class="col" id="pruebaResultado">
+            <section class="col">
 
-                <!-- AQUÍ VA LA RESPUESTA DE LA BÚSQUEDA -->
+                <div class="container d-flex justify-content-start">
+                    <div class="row" id="resultadoBusqueda">
+
+                        <!-- AQUÍ VA LA RESPUESTA DE LA BÚSQUEDA -->
+                        
+                    </div>
+                </div>
 
             </section>
 

@@ -1,37 +1,44 @@
 {
     "Tuki": [
         {"enlace": "tuki"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Tuki"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ],
     "Scattergories": [
         {"enlace": "scattergories"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Scattergories"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ],
     "Carcasone": [
         {"enlace": "carcasone"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Carcassone"},
+        {"imagen": "tuki"},
+        {"descripcion": "Es un juego al que juega Bea mientras berrea."}
     ],
     "Doubble": [
         {"enlace": "doubble"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Dobble"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ],
     "Sushi Go": [
         {"enlace": "sushi_go"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Sushi Go"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ],
     "Tukistán": [
         {"enlace": "tukistan"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Tukistán"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ],
     "Jaipur": [
         {"enlace": "jaipur"},
-        ["Resultado 2"],
-        ["Resultado 3"]
+        {"nombre": "Jaipur"},
+        {"imagen": "tuki"},
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
     ]
 }

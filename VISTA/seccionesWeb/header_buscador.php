@@ -38,12 +38,12 @@
 
                 <h1 id="tituloBuscador"> ¿A qué te apetece jugar hoy? </h1>
 
-                <form class="d-flex" method="get" action="#">
+                <form class="d-flex" method="get" action="#" id="formBuscador">
                     <input class="form-control form-control-lg rounded-pill" id="buscador" type="search" placeholder="o(￣▽￣)/" aria-label="Buscar">
                     <button class="btn btn-outline-danger rounded-pill" type="submit"> Buscar </button>
                 </form>
 
-                 <div class="list-group position-absolute w-25" id="sugerencias">
+                 <div class="list-group" id="sugerencias"> <!-- Añadir position-absolute w-25 si se quiere por encima del texto -->
                     <!-- <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                         The current link item
                     </a>
@@ -61,7 +61,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <i class="bi bi-people">
-                                <span class="d-none d-lg-inline"> Regístrate </span>
+                                <span class="d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#areaRegistro"> Regístrate </span>
                             </i> 
                         </li>
                         <li>

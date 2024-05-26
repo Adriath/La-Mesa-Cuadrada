@@ -38,7 +38,7 @@
                     <ul class="list-unstyled">
                         <li>
                             <i class="bi bi-people">
-                                <span class="d-none d-lg-inline"> Regístrate </span>
+                                <span class="d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#areaRegistro"> Regístrate </span>
                             </i> 
                         </li>
                         <li>

@@ -71,6 +71,8 @@ class BBDD{
     }
 
 
+    // INSERTAR
+    
     public function nonQueryId($sqlstr){
 
         $results = $this->conexion->query($sqlstr) ;

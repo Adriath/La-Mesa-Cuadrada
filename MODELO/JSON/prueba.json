@@ -3,42 +3,56 @@
         {"enlace": "tuki"},
         {"nombre": "Tuki"},
         {"imagen": "tuki_card.png"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Scattergories": [
         {"enlace": "scattergories"},
         {"nombre": "Scattergories"},
         {"imagen": "scattergories_card.jpg"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Carcasone": [
         {"enlace": "carcasone"},
         {"nombre": "Carcassone"},
         {"imagen": "carcassonne_card.jpg"},
-        {"descripcion": "Es un juego al que juega Bea mientras berrea."}
+        {"descripcion": "Es un juego al que juega Bea mientras berrea."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Doubble": [
         {"enlace": "doubble"},
         {"nombre": "Dobble"},
         {"imagen": "dobble_card.png"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Sushi Go": [
         {"enlace": "sushi_go"},
         {"nombre": "Sushi Go"},
         {"imagen": "tuki"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Hola Claudia, esto es un mensaje de Sushi Go pa ti pa que lo difrutes. Ea."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Tukistán": [
         {"enlace": "tukistan"},
         {"nombre": "Tukistán"},
         {"imagen": "tuki_card.png"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ],
     "Jaipur": [
         {"enlace": "jaipur"},
         {"nombre": "Jaipur"},
         {"imagen": "jaipur_card.jpg"},
-        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."}
+        {"descripcion": "Some quick example text to build on the card title and make up the bulk of the card's content."},
+        {"minJugadores": 2},
+        {"maxJugadores": 6}
     ]
 }

@@ -191,6 +191,8 @@ function pintaCardResultado(datos) {
         let nombre = json[1].nombre;
         let imagen = json[2].imagen;
         let descripcion = json[3].descripcion;
+        let minJugadores = json[4].minJugadores;
+        let maxJugadores = json[5].maxJugadores;
 
         card = $('<div>', { class: 'col mx-2 mb-3' }).append(
             $('<div>', { class: 'card', style: 'width: 12rem;' }).append(
@@ -199,6 +201,8 @@ function pintaCardResultado(datos) {
                     $('<h5>', { class: 'card-title text-center' }).text(nombre),
                     $('<hr>', { class: 'text-danger' }),
                     $('<p>', { class: 'card-text' }).text(descripcion),
+                    $('<p>', { class: 'card-text' }).text("Jugadores: " + minJugadores + " - " + maxJugadores),
+                    // $('<p>', { class: 'card-text' }).text("Jugadores: 2 - 6"),
                     $('<a>', { href: 'index.php?pagina=' + enlace, class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
                 )
             )

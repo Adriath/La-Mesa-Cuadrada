@@ -28,7 +28,7 @@ class BBDD{
         }
     }
 
-    private function datosConexion(){
+    private function datosConexion(){ // Obtener datos de la base de datos
 
         $direccion = dirname(__FILE__) ;
         $jsondata = file_get_contents($direccion . "/" . "config") ;
@@ -37,7 +37,7 @@ class BBDD{
     }
 
 
-    private function convertirUTF8($array){
+    private function convertirUTF8($array){ // Convertir a UTF-8
 
         array_walk_recursive($array, function(&$item, $key){
 
@@ -50,7 +50,7 @@ class BBDD{
         return $array ;
     }
 
-    public function obtenerDatos($sqlstr){
+    public function obtenerDatos($sqlstr){ // Obtener datos
 
         $results = $this->conexion->query($sqlstr) ;
         $resultArray = array() ;
@@ -63,7 +63,7 @@ class BBDD{
         return $this->convertirUTF8($resultArray) ;
     }
 
-    public function nonQuery($sqlstr){
+    public function nonQuery($sqlstr){ // Ejecutar una consulta y devuelve el número de filas afectadas
 
         $results = $this->conexion->query($sqlstr) ;
 
@@ -73,7 +73,7 @@ class BBDD{
 
     // INSERTAR
     
-    public function nonQueryId($sqlstr){
+    public function nonQueryId($sqlstr){ // Ejecuta una sentencia y devuelve el ID insertado
 
         $results = $this->conexion->query($sqlstr) ;
         $filas = $this->conexion->affected_rows ;
@@ -86,6 +86,12 @@ class BBDD{
         {
             return 0 ;
         }
+    }
+
+
+    protected function encriptar($string){
+
+        return md5($string) ;
     }
 
 }

@@ -2,7 +2,7 @@
 
 class Response {
 
-    private $response = [
+    public $response = [
         'status' => "ok",
         'result' => array()
     ];
@@ -52,6 +52,20 @@ class Response {
         $this->response['result'] = array(
             "error_id" => "404",
             "error_msg" => "El servidor no puede encontrar el recurso solicitado"
+        ) ;
+
+        return $this->response ;
+    }
+
+
+    // 500
+
+    public function error_500($string = "Error interno del servidor") { // Error interno del servidor
+
+        $this->response['status'] = "error" ;
+        $this->response['result'] = array(
+            "error_id" => "500",
+            "error_msg" => $string
         ) ;
 
         return $this->response ;

@@ -12,11 +12,13 @@ $(document).ready(function (){
     // Hacer la solicitud AJAX para obtener los datos
     $.ajax({
 
+        // url: `http://localhost/La_Mesa_Cuadrada/MODELO/Modelo.php?page=1`,
         url: `http://localhost/La_Mesa_Cuadrada/MODELO/JSON/prueba.json`,
         method: 'GET',
         dataType: 'json',
 
         success: function (response) {
+
 
             console.log("ESTOY DENTRO DEL SUCCESS") ;
 

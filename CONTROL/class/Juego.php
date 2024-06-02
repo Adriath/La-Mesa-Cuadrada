@@ -94,4 +94,63 @@ class Juego extends BBDD {
         }
     }
 
+
+    public function put($json){
+
+        $_respuesta = new Response() ;
+        $datos = json_decode($json, true) ;
+        if (!isset($datos["id_juego"])) {
+            // Si faltan datos
+
+            return $_respuesta->error_400() ;
+        }
+        else{
+            // Todo esta bien
+
+            if(isset($datos['id_juego'])) {$this->idJuego = $datos['id_juego'] ;}
+            $this->nombre = $datos["nombre"] ;
+            $this->enlace = $datos["enlace"] ;
+            $this->imagen = $datos["imagen"] ;
+            $this->descripcion = $datos["descripcion"] ;
+            $this->minJugadores = $datos["minJugadores"] ;
+            $this->maxJugadores = $datos["maxJugadores"] ;
+            // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
+
+            $resp = $this->modificarJuego() ;
+
+            if($resp){
+
+                $respuesta = $_respuesta->response ;
+                $respuesta["result"] = array(
+                    "id_juego" => $this->idJuego
+                ) ;
+
+                return $respuesta ;
+            }
+            else{
+
+                $_respuesta->error_500("Error interno, no hemos podido insertar el juego") ;
+            }
+        }
+    }
+
+
+    private function modificarJuego(){
+
+        $query = "UPDATE " . $this->tabla . " SET nombre='" . $this->nombre . "', enlace='" . $this->enlace . "', imagen='" . $this->imagen . "', descripcion='" . $this->descripcion . "', minJugadores='" . $this->minJugadores . "', maxJugadores='" . $this->maxJugadores . 
+        "' WHERE id_juego= $this->idJuego" ;
+
+
+        $resp = parent::nonQuery($query) ;
+
+        if ($resp >= 1){
+
+            return $resp ;
+        }
+        else{
+
+            return 0 ;
+        }
+    }
+
 }

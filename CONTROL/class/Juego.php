@@ -153,4 +153,56 @@ class Juego extends BBDD {
         }
     }
 
+
+    public function delete($json){
+
+        $_respuesta = new Response() ;
+        $datos = json_decode($json, true) ;
+        if (!isset($datos["id_juego"])) {
+            // Si faltan datos
+
+            return $_respuesta->error_400() ;
+        }
+        else{
+            // Todo esta bien
+
+            if(isset($datos['id_juego'])) {$this->idJuego = $datos['id_juego'] ;}
+            
+            // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
+
+            $resp = $this->eliminarJuego() ;
+
+            if($resp){
+
+                $respuesta = $_respuesta->response ;
+                $respuesta["result"] = array(
+                    "id_juego" => $this->idJuego
+                ) ;
+
+                return $respuesta ;
+            }
+            else{
+
+                $_respuesta->error_500("Error interno, no hemos podido insertar el juego") ;
+            }
+        }
+    }
+
+
+    private function eliminarJuego(){
+
+        $query = "DELETE FROM " . $this->tabla . " WHERE id_juego= $this->idJuego" ;
+
+        $resp = parent::nonQuery($query) ;
+
+        if ($resp >= 1){
+
+            return $resp ;
+        }
+        else{
+
+            return 0 ;
+        }
+    }
+
 }

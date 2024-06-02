@@ -22,6 +22,17 @@ class Response {
 
     // 400
 
+    public function error_401($string = "No autorizado") { // Error en el token, no autorizado
+
+        $this->response['status'] = "error" ;
+        $this->response['result'] = array(
+            "error_id" => "401",
+            "error_msg" => $string
+        ) ;
+
+        return $this->response ;
+    }
+
     public function error_405() { // Envío por método no permitido
 
         $this->response['status'] = "error" ;
@@ -70,4 +81,5 @@ class Response {
 
         return $this->response ;
     }
+
 }

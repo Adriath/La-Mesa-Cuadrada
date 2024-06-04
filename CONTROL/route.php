@@ -19,7 +19,7 @@ if ($metodo == 'GET') {
                 break;
 
             case "tuki":
-                require_once 'VISTA/tuki.php';
+                require_once 'VISTA/area_juego.php';
                 break;
 
             case "scattergories":

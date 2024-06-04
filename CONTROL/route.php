@@ -4,12 +4,17 @@
 $ruta = $_SERVER['REQUEST_URI'];
 $metodo = $_SERVER['REQUEST_METHOD'];
 
+$pagina = basename(parse_url($ruta, PHP_URL_PATH)); // Extrae el nombre del archivo o ruta de la URL
+
 // RUTA PRINCIPAL: http://localhost/La_Mesa_Cuadrada/index.php
 
 if ($metodo == 'GET') {
-    if (isset($_GET["pagina"])) {
+    if (isset($pagina)) {
         
-        switch ($_GET["pagina"]) {
+        switch ($pagina) {
+            case "":
+            case "/":
+            case "index":
             case "home":
                 require_once 'VISTA/home.php';
                 break;
@@ -18,7 +23,7 @@ if ($metodo == 'GET') {
                 require_once 'VISTA/buscador.php';
                 break;
 
-            case "tuki":
+            case "partida":
                 require_once 'VISTA/area_juego.php';
                 break;
 
@@ -35,6 +40,7 @@ if ($metodo == 'GET') {
                 break;
 
             default:
+            echo "ERROR 404. PÁgina no encontrada";
                 break;
         }
     } else {

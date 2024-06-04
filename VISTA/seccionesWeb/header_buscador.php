@@ -26,7 +26,7 @@
                 <!-- Logotipo -->
 
                 <div class="text-center">
-                    <a href="index.php?pagina=home">
+                    <a href="home">
                         <img class="img-fluid" src="VISTA/img/logo.png" width="150" alt="Logotipo La Mesa Cuadrada">
                     </a>
                     <P class="h5"> La Mesa Cuadrada </P>

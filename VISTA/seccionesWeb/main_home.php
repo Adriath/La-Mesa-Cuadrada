@@ -130,7 +130,7 @@
                 <!-- Ir al buscador (PRUEBAS)-->
 
                 <div class="row">
-                    <a class="col-4 link-danger" href="index.php?pagina=buscador">
+                    <a class="col-4 link-danger" href="buscador">
                         <h3 class="mt-5"> Ir al buscador </h3>
                     </a>
                 </div>

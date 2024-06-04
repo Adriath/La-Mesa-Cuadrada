@@ -3,7 +3,7 @@
 <nav style="--bs-breadcrumb-divider: '🔴';" aria-label="Migas de pan"> <!-- Insertar entre las comillas simples ('') el tipo de separador deseado -->
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="link-danger" href="index.php?pagina=home"> Home </a></li>
+            <li class="breadcrumb-item"><a class="link-danger" href="home"> Home </a></li>
             <li class="breadcrumb-item active" aria-current="Página actual"> Buscador </li>
         </ol>
     </div>

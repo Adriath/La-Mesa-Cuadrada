@@ -72,7 +72,7 @@ $(document).ready(function (){
 
 function haceAlgo() {
 
-    window.location.href = 'http://localhost/La_Mesa_Cuadrada/index.php?pagina=buscador&resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
+    window.location.href = 'http://localhost/La_Mesa_Cuadrada/buscador?resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
 }
 
 function muestraSugerencias(datos, textoUsuario) {
@@ -205,7 +205,7 @@ function pintaCardResultado(datos) {
                     $('<p>', { class: 'card-text' }).text(descripcion),
                     $('<p>', { class: 'card-text' }).text("Jugadores: " + minJugadores + " - " + maxJugadores),
                     // $('<p>', { class: 'card-text' }).text("Jugadores: 2 - 6"),
-                    $('<a>', { href: 'index.php?pagina=' + enlace, class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
+                    $('<a>', { href: 'partida?juego=' + enlace, class: 'btn btn-danger d-flex justify-content-center' }).text('¡Jugar!')
                 )
             )
         );

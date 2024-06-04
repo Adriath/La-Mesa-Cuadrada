@@ -24,6 +24,12 @@
     /* Hace el borde más grueso */
 }
 
+/* Estilo para el área de juego */
+.scrollspy-example {
+    height: 400px; /* Altura fija del contenedor */
+    overflow-y: auto; /* Habilita el scroll vertical */
+}
+
 /* -------------- ANIMACIONES -------------------- */
 
 /* Animación título del buscador */

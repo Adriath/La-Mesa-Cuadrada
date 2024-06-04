@@ -127,7 +127,7 @@ function despliegaListaSugerencias(datos) {
         const json = datos[element];
         if (json && json[0] && json[0].enlace) {
             const linkItem = $('<a>', {
-                href: "index.php?pagina=" + json[0].enlace,
+                href: "partida?pagina=" + json[0].enlace,
                 class: 'list-group-item list-group-item-action',
                 text: element
             });

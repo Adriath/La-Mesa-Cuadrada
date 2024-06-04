@@ -8,6 +8,12 @@ $pagina = basename(parse_url($ruta, PHP_URL_PATH)); // Extrae el nombre del arch
 
 // RUTA PRINCIPAL: http://localhost/La_Mesa_Cuadrada/index.php
 
+// Redirigir a /home si la página solicitada es index.php
+if ($pagina === "index.php" || $pagina === "") {
+    header("Location: http://localhost/La_Mesa_Cuadrada/home");
+    exit();
+}
+
 if ($metodo == 'GET') {
     if (isset($pagina)) {
         

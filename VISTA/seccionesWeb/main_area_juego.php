@@ -16,7 +16,7 @@
     <div class="container">
 
         <nav id="areaJuego" class="navbar bg-body-tertiary px-3 mb-3">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand pe-none" href="#">Navbar</a>
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <a class="nav-link bg" href="#scrollspyHeading1"> PARTIDA </a>

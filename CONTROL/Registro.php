@@ -2,6 +2,7 @@
 
 require_once 'CONTROL/class/Usuario.php' ;
 
+
     // echo "Estoy dentro del POST del Registro.php." ;
     
     $usuario = new Usuario($_POST['usuario'], $_POST['password']) ;

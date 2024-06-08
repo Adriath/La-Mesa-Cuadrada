@@ -57,13 +57,13 @@ if ($metodo == 'GET') {
     }
     
 }
-else if ($metodo == 'POST') {
+// else if ($metodo == 'POST') {
 
 
-    if (isset($_POST['usuario']) && isset($_POST['password'])) {
+//     if (isset($_POST['usuario']) && isset($_POST['password'])) {
         
-        require_once "CONTROL/Registro.php" ;
-    }
+//         require_once "CONTROL/Registro.php" ;
+//     }
 
 
-}
+// }

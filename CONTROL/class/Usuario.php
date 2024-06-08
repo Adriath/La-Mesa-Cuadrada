@@ -1,7 +1,9 @@
 <?php
 
-require_once 'MODELO/BBDD.php';
-require_once 'CONTROL/class/Response.php' ;
+// require_once 'MODELO/BBDD.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
+// require_once 'CONTROL/class/Response.php' ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Response.php" ;
 
 /**
  * Description of Usuario
@@ -13,7 +15,7 @@ class Usuario extends BBDD implements JsonSerializable{
     private $usuario ;
     private $password ;
     
-    public function __construct($usuario, $password) {
+    public function __construct($usuario=null, $password=null) {
         parent::__construct();
         $this->usuario = $usuario;
         $this->password = $password;

@@ -20,7 +20,44 @@ function enviarFormularioRegistro() {
             // });
         
     });
+
+    $('#emailSesion').keyup(function () {
+     
+        $.ajax({
+
+            // url: `http://localhost/La_Mesa_Cuadrada/MODELO/Modelo.php?page=1`,
+            url: `http://localhost/La_Mesa_Cuadrada/MODELO/Modelo.php?usuarios`,
+            method: 'GET',
+            dataType: 'json',
     
+            success: function (response) {
+    
+    
+                console.log("ESTOY DENTRO DEL SUCCESS") ;
+                
+                // Manejar la respuesta del servidor
+                console.log('Datos recibidos:', response) ;
+    
+                // Por ejemplo, mostrar los datos en algún lugar de tu página
+                // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
+                
+                                
+                compruebaUsuario(response) ;
+                
+            },
+            error: function (xhr, status, error) {
+                // Manejar cualquier error que ocurra durante la solicitud
+                console.error('Error al obtener los datos:', error);
+            }
+        });
+    }) ;
+    
+}
+
+
+function compruebaUsuario(datos) {
+    
+    console.log("Estoy dentro de compruebaUsuaruio()") ;
 }
 
 function desaparecePlaceholder() {

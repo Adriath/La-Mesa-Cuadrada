@@ -1,7 +1,9 @@
 <?php
 
+// require_once 'MODELO/BBDD.php' ;
+// require_once 'Response.php' ;
 require_once 'MODELO/BBDD.php' ;
-require_once 'Response.php' ;
+require_once 'CONTROL/class/Response.php' ;
 
 class Authentication extends BBDD {
 

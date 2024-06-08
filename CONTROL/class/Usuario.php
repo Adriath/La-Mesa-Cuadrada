@@ -1,16 +1,20 @@
 <?php
 
+require_once 'MODELO/BBDD.php';
+require_once 'CONTROL/class/Response.php' ;
+
 /**
  * Description of Usuario
  *
  * @author Adrián Arjona
  */
-class Usuario implements JsonSerializable{
+class Usuario extends BBDD implements JsonSerializable{
     
     private $usuario ;
     private $password ;
     
     public function __construct($usuario, $password) {
+        parent::__construct();
         $this->usuario = $usuario;
         $this->password = $password;
     }
@@ -29,6 +33,22 @@ class Usuario implements JsonSerializable{
 
     public function setPassword($password): void {
         $this->password = $password;
+    }
+
+
+    // -------------------- FUNCIONES --------------------------
+
+    public function obtenerUsuario($id = null) // Obtiene usuario por ID o todos
+    { // Obtiene los datos de un juego
+
+        $query = "SELECT email,password FROM usuario" ;
+
+        if ($id != null) { // Si no se ha introducido ID
+            
+            $query = "SELECT email,password FROM usuario WHERE id_usuario = $id";
+            }
+            
+        return parent::obtenerDatos($query);
     }
 
 

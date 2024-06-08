@@ -55,9 +55,12 @@ class BBDD{
         $results = $this->conexion->query($sqlstr) ;
         $resultArray = array() ;
 
-        foreach ($results as $key) {
+        // foreach ($results as $key) {
             
-            $resultArray[] = $key ;
+        //     $resultArray[] = $key ;
+        // }
+        while ($row = $results->fetch_assoc()) { // Método alternativo al comentado para obtener un array asociativo
+            $resultArray[] = $row;
         }
 
         return $this->convertirUTF8($resultArray) ;

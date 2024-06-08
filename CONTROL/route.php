@@ -1,6 +1,9 @@
 
 <?php
 
+require_once 'CONTROL/class/Usuario.php' ;
+require_once 'CONTROL/class/Authentication.php' ;
+
 $ruta = $_SERVER['REQUEST_URI'];
 $metodo = $_SERVER['REQUEST_METHOD'];
 
@@ -56,5 +59,11 @@ if ($metodo == 'GET') {
 }
 else if ($metodo == 'POST') {
 
-    echo "Estoy dentro de la sección POST del route" ;
+
+    if (isset($_POST['usuario']) && isset($_POST['password'])) {
+        
+        require_once "CONTROL/Registro.php" ;
+    }
+
+
 }

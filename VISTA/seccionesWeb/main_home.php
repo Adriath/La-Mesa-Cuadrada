@@ -59,7 +59,7 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label for="emailSesion" class="form-label"> Email </label>
-                                                <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp" name="email">
+                                                <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp" name="usuario">
                                                 <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
                                             </div>
                                             <div class="mb-3">

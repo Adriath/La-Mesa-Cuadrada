@@ -54,3 +54,7 @@ if ($metodo == 'GET') {
     }
     
 }
+else if ($metodo == 'POST') {
+    
+    echo "Hay algo en POST al darle al botón de enviar formulario";
+}

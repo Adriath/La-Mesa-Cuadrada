@@ -1,8 +1,6 @@
-
-
 <!-- MIGAS DE PAN -->
 
-    <!-- Las migas de pan no aparecen en esta página porque es la principal -->
+<!-- Las migas de pan no aparecen en esta página porque es la principal -->
 
 <!-- MAIN -->
 
@@ -20,14 +18,14 @@
 
                 <!-- Esto es una muestra. Lo que he utilizado es Image overlays de Bootstrap. Se requiere imagen vectorial para que quede bien en la versión móvil -->
 
-                <div class="card text-bg-light">  
+                <div class="card text-bg-light">
                     <img src="VISTA/img/fondo_columnaIzquierda.jpg" class="card-img" alt="...">
                     <div class="card-img-overlay">
-                        <h5 class="card-title"> ¿Quieres guardar tu progreso? </h5>
-                        <p class="card-text"> 
-                            Deja de perder tus partidas.
+                        <h5 class="card-title mb-4"> ¿Quieres guardar tu progreso? </h5>
+                        <p class="card-text">
+                            Deja de perder el progreso de tus partidas.
                             <br><br>
-                            Regístrate en menos de un minutos para poder jugar
+                            Regístrate en menos de un minuto para poder jugar
                             <br>
                             torneos con amigos y llevar un registro de tus partidas.
                         </p>
@@ -53,41 +51,68 @@
                                         <!-- De momento es un ejemplo. El botón de envío estará fuerad el formulario (ahora mismo no hay etiquetas form).
                                         El botón se puede asociar con JavaScript de manera sencilla aunque esté fuera de las etiquetas. -->
 
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                            <span class="input-group-text" id="basic-addon2">@example.com</span>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="basic-url" class="form-label">Your vanity URL</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                        <form id="formRegistro" action="CONTROL/route.php" method="POST">
+                                            <!-- <div class="mb-3">
+                                                <label for="emailSesion" class="form-label"> Nombre usuario </label>
+                                                <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp">
+                                                <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
+                                            </div> -->
+                                            <div class="mb-3">
+                                                <label for="emailSesion" class="form-label"> Email </label>
+                                                <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp" name="email">
+                                                <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
                                             </div>
-                                            <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-                                        </div>
+                                            <div class="mb-3">
+                                                <label for="passwordSesion" class="form-label"> Contraseña </label>
+                                                <input type="password" class="form-control" id="passwordSesion" name="password">
+                                                <div id="passwordSesionHelp" class="form-text"> Obligatoria </div>
+                                            </div>
+                                        </form>
 
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">$</span>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                            <span class="input-group-text">.00</span>
-                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
+                                        <button type="button" id="botonEnviarRegistro" class="btn btn-danger"> Enviar </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                                            <span class="input-group-text">@</span>
-                                            <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-                                        </div>
+                    <div class="card-img-overlay mb-3 me-3 align-self-end text-end">
+                        <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#areaInicioSesion">
+                            Iniciar sesión
+                        </button>
+                        <h5 class="card-title"> ¿Ya tienes cuenta? </h5>
+                        <p class="card-text">
+                            Inicia sesión para jugar.
+                        </p>
 
-                                        <div class="input-group">
-                                            <span class="input-group-text">With textarea</span>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="areaInicioSesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tituloAreaRegistro" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="tituloAreaRegistro"> Área de INICIO DE SESIÓN </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <!-- FORMULARIO DE REGISTRO -->
+
+                                        <!-- De momento es un ejemplo. El botón de envío estará fuerad el formulario (ahora mismo no hay etiquetas form).
+                                        El botón se puede asociar con JavaScript de manera sencilla aunque esté fuera de las etiquetas. -->
+
+                                        <form action="">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                <label for="floatingInput">Email address</label>
+                                            </div>
+                                            <div class="form-floating">
+                                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                                <label for="floatingPassword">Password</label>
+                                            </div>
+                                        </form>
 
                                     </div>
                                     <div class="modal-footer">
@@ -97,6 +122,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -140,7 +166,7 @@
                 </p>
             </div>
 
-            
+
 
         </div>
 

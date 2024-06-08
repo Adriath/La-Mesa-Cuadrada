@@ -1,3 +1,12 @@
+
+function enviarFormularioRegistro() {
+    
+    $('#botonEnviarRegistro').click(function () {
+        $('#formRegistro').submit();
+    });
+    
+}
+
 function desaparecePlaceholder() {
     
     $('#buscador').focus(function () {
@@ -13,12 +22,13 @@ function animacionBuscador() {
         $("#buscador").addClass("show"); // Animación para la barra
     });
 
-    
 }
 
 function comenzar() {
+
     desaparecePlaceholder();
     animacionBuscador() ;
+    enviarFormularioRegistro();
 }
 
 window.addEventListener("load", comenzar, false);

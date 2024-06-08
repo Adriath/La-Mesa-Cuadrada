@@ -57,7 +57,18 @@ function enviarFormularioRegistro() {
 
 function compruebaUsuario(datos) {
     
-    console.log("Estoy dentro de compruebaUsuaruio()") ;
+    let emailInput = $('#emailSesion').val() ; // Obtenemos el email introducido por el usuario
+    let usuarioEncontrado = datos.find(usuario => usuario.email === emailInput) ; // Buscamos el usuario en el array de usuarios
+
+    if (usuarioEncontrado) {
+        // console.log("El usuario existe");
+        $('#emailSesionHelp').addClass('text-danger').text("El usuario ya existe");
+        
+    } 
+    else {
+        // console.log("El usuario no existe");
+        $('#emailSesionHelp').removeClass('text-danger').text("Obligatorio");
+    }
 }
 
 function desaparecePlaceholder() {

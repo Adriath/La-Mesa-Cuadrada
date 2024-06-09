@@ -102,6 +102,12 @@ $('#nombreUsuario').keyup(function () {
     validarNombreUsuario();
 })
 
+
+$('#emailSesion').keyup(function () {
+
+    validarEmail();
+})
+
 // -------------- MÉTODOS AUXILIARES -----------------
 
 
@@ -148,7 +154,7 @@ function compruebaUsuario(datos) {
     else {
         // console.log("El usuario no existe");
         $('#emailSesionError').empty();
-        $('#emailSesion').removeClass('is-invalid');
+        // $('#emailSesion').removeClass('is-invalid');
     }
 }
 
@@ -157,7 +163,7 @@ function compruebaUsuario(datos) {
 function validarNombreUsuario() {
 
     let valido = false;
-    const limiteCaracteres = 50;
+    const limiteCaracteres = 80;
     const dobleEspacio = /  /g; // No se permiten dos espacios seguidos
 
     if ($('#nombreUsuario').val().trim().length === 0) // Si está vacío
@@ -186,6 +192,45 @@ function validarNombreUsuario() {
             $('#nombreUsuario').removeClass('is-invalid');
 
             $('#nombreUsuario').addClass('is-valid');
+
+            valido = true;
+        }
+
+    }
+
+    return valido ;
+}
+
+
+// Comprueba formato de email
+
+function validarEmail() {
+
+    let valido = false;
+    const  regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // La expresión regular del correo electrónico
+
+    if ($('#emailSesion').val().trim().length === 0) // Si está vacío
+    {
+        $('#emailSesionHelp').addClass('text-danger').text("El email no puede estar vacío");
+        $('#emailSesion').addClass('is-invalid');
+
+        valido = false;
+    }
+    else // Si no está vacío
+    {
+
+        if (!regexEmail.test($('#emailSesion').val())) {
+            $('#emailSesionHelp').addClass('text-danger').text("Formato de email incorrecto");
+            $('#emailSesion').addClass('is-invalid');
+
+            valido = false;
+        }
+        else 
+        {
+            $('#emailSesionHelp').removeClass('text-danger').text("Obligatorio");
+            $('#emailSesion').removeClass('is-invalid');
+
+            $('#emailSesion').addClass('is-valid');
 
             valido = true;
         }

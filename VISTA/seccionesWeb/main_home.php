@@ -58,6 +58,11 @@
                                                 <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
                                             </div> -->
                                             <div class="mb-3">
+                                                <label for="emailSesion" class="form-label"> Nombre usuario </label>
+                                                <input type="text" class="form-control" id="nombreUsuario" aria-describedby="nombreUsuarioHelp" name="nombreUsuario">
+                                                <div id="nombreUsuarioHelp" class="form-text"> Obligatorio </div>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="emailSesion" class="form-label"> Email </label>
                                                 <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp" name="usuario">
                                                 <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
@@ -66,6 +71,11 @@
                                                 <label for="passwordSesion" class="form-label"> Contraseña </label>
                                                 <input type="password" class="form-control" id="passwordSesion" name="password">
                                                 <div id="passwordSesionHelp" class="form-text"> Obligatoria </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="passwordSesion" class="form-label"> Repetir contraseña </label>
+                                                <input type="password" class="form-control" id="passwordRepetidoSesion">
+                                                <div id="passwordRepetidoSesionHelp" class="form-text"> Obligatoria </div>
                                             </div>
                                         </form>
 

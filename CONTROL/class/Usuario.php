@@ -43,7 +43,7 @@ class Usuario extends BBDD implements JsonSerializable{
     public function obtenerUsuario($id = null) // Obtiene usuario por ID o todos
     { // Obtiene los datos de un juego
 
-        $query = "SELECT email,password FROM usuario" ;
+        $query = "SELECT * FROM usuario" ;
 
         if ($id != null) { // Si no se ha introducido ID
             

@@ -1,28 +1,52 @@
 
+let nombreUsuarioValido = false ;
+let emailValido = false ;
+let passwordValido = false ;
+let passwordRepetirValido = false ;
+
+let nombreUsuarioYaExiste = false ;
+let emailYaExiste = false ;
+
+let formularioValido = false ;
+
 // Envío del formulario de registro al hacer click en el botón "Enviar"
 
 function enviarFormularioRegistro() {
 
+    
     $('#botonEnviarRegistro').click(function () {
-        $('#formRegistro').submit();
+
+            
+        if (formularioValido){
+
+            $('#formRegistro').submit();
+        }
+        else
+        {
+            $("#errorFormRegistro").text("REVISA EL FORMULARIO");
+        }
+
+
+        
 
         // $.ajax({
         //     url: $(this).attr('action'), // URL del formulario
         //     method: $(this).attr('method'), // Método del formulario (POST en este caso)
-        //     data: $(this).serialize(), // Serializar los datos del formulario
-        //     // ... (resto de las opciones de $.ajax())
-        //     success: function(response) { // Función que se ejecuta si la solicitud es exitosa
+    //     data: $(this).serialize(), // Serializar los datos del formulario
+//     // ... (resto de las opciones de $.ajax())
+//     success: function(response) { // Función que se ejecuta si la solicitud es exitosa
         //         // Manejar la respuesta del servidor (por ejemplo, mostrar un mensaje)
-        //         console.log(response);
+    //         console.log(response);
         //     },
         //     error: function(xhr, status, error) { // Función que se ejecuta si hay un error
-        //         // Manejar el error (por ejemplo, mostrar un mensaje de error)
-        //         console.error(error);
-        //     }
-        // });
+    //         // Manejar el error (por ejemplo, mostrar un mensaje de error)
+//         console.error(error);
+//     }
+// });
 
-    });
+});
 
+}
 
     // -------------- EVENTOS -----------------
 
@@ -51,7 +75,7 @@ function enviarFormularioRegistro() {
                 // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
 
 
-                compruebaNombreUsuario(response);
+                nombreUsuarioYaExiste = compruebaNombreUsuario(response);
 
             },
             error: function (xhr, status, error) {
@@ -82,7 +106,7 @@ function enviarFormularioRegistro() {
                 // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
 
 
-                compruebaUsuario(response);
+                emailYaExiste = compruebaUsuario(response);
 
             },
             error: function (xhr, status, error) {
@@ -92,31 +116,38 @@ function enviarFormularioRegistro() {
         });
     });
 
-}
 
 
 // VALIDACIONES DE FORMATO
 
 $('#nombreUsuario').keyup(function () {
 
-    validarNombreUsuario();
+    nombreUsuarioValido = validarNombreUsuario();
 })
 
 
 $('#emailSesion').keyup(function () {
 
-    validarEmail();
+    emailValido = validarEmail();
 })
 
 
 $('#passwordSesion').keyup(function () {
 
-    validarPassword();
+    passwordValido = validarPassword();
 })
 
 $(document).ready(function() {
     $('#listaErroresPassword').hide(); // Oculta la lista al cargar la página
 });
+
+$('#passwordRepetidoSesion').keyup(function () {
+
+    passwordRepetirValido = validarRepetirPassword() ;
+})
+
+$('#nombreUsuario, #emailSesion, #passwordSesion, #passwordRepetidoSesion').on('keyup', validarFormulario) ;
+
 
 // -------------- MÉTODOS AUXILIARES -----------------
 
@@ -124,6 +155,8 @@ $(document).ready(function() {
 // Comprueba nombre de usuario
 
 function compruebaNombreUsuario(datos) {
+
+    let valido = false ;
 
     let nombreInput = $('#nombreUsuario').val(); // Obtenemos el nombre de usuario introducido por el usuario
     nombreInput = nombreInput.trim();
@@ -135,19 +168,26 @@ function compruebaNombreUsuario(datos) {
         // console.log("El usuario existe");
         $('#nombreUsuarioError').text("El nombre de usuario ya existe");
         $('#nombreUsuario').addClass('is-invalid');
+        $('#nombreUsuario').focus() ;
 
+        valido = false ;
     }
     else {
         // console.log("El usuario no existe");
         $('#nombreUsuarioError').empty();
         // $('#nombreUsuario').removeClass('is-invalid');
+        valido = true ;
     }
+
+    return valido ;
 }
 
 
 // Comprueba email
 
 function compruebaUsuario(datos) {
+
+    let valido = false ;
 
     let emailInput = $('#emailSesion').val(); // Obtenemos el email introducido por el usuario
     emailInput = emailInput.trim();
@@ -159,13 +199,20 @@ function compruebaUsuario(datos) {
         // console.log("El usuario existe");
         $('#emailSesionError').text("El usuario ya existe");
         $('#emailSesion').addClass('is-invalid');
+        $('#emailSesion').focus() ;
+
+        valido = false ;
 
     }
     else {
         // console.log("El usuario no existe");
         $('#emailSesionError').empty();
         // $('#emailSesion').removeClass('is-invalid');
+
+        valido = true ;
     }
+
+    return valido ;
 }
 
 // Comprueba formato de nombre de usuario
@@ -180,6 +227,7 @@ function validarNombreUsuario() {
     {
         $('#nombreUsuarioHelp').addClass('text-danger').text("El nombre de usuario no puede estar vacío");
         $('#nombreUsuario').addClass('is-invalid');
+        $('#nombreUsuario').focus() ;
 
         valido = false;
     }
@@ -188,12 +236,14 @@ function validarNombreUsuario() {
         if ($('#nombreUsuario').val().length > limiteCaracteres) {
             $('#nombreUsuarioHelp').addClass('text-danger').text("El nombre de usuario no puede superar los 50 caracteres");
             $('#nombreUsuario').addClass('is-invalid');
+            $('#nombreUsuario').focus() ;
 
             valido = false;
         }
         else if ($('#nombreUsuario').val().match(dobleEspacio)) {
             $('#nombreUsuarioHelp').addClass('text-danger').text("No se permiten dos espacios seguidos");
             $('#nombreUsuario').addClass('is-invalid');
+            $('#nombreUsuario').focus() ;
 
             valido = false;
         }
@@ -202,6 +252,7 @@ function validarNombreUsuario() {
             $('#nombreUsuario').removeClass('is-invalid');
 
             $('#nombreUsuario').addClass('is-valid');
+            
 
             valido = true;
         }
@@ -223,6 +274,7 @@ function validarEmail() {
     {
         $('#emailSesionHelp').addClass('text-danger').text("El email no puede estar vacío");
         $('#emailSesion').addClass('is-invalid');
+        $('#emailSesion').focus() ;
 
         valido = false;
     }
@@ -232,6 +284,7 @@ function validarEmail() {
         if (!regexEmail.test($('#emailSesion').val())) {
             $('#emailSesionHelp').addClass('text-danger').text("Formato de email incorrecto");
             $('#emailSesion').addClass('is-invalid');
+            $('#emailSesion').focus() ;
 
             valido = false;
         }
@@ -279,6 +332,7 @@ function validarPassword() {
         $('#listaErroresPassword').hide() ; // Oculto la lista de errores
         $('#passwordSesionHelp').addClass('text-danger').text("La contraseña no puede estar vacía");
         $('#passwordSesion').addClass('is-invalid');
+        $('#passwordSesion').focus() ;
 
         valido = false;
     }
@@ -294,7 +348,10 @@ function validarPassword() {
             $('#min8Caracteres').find('i.bi-check-circle').remove();
             $('#min8Caracteres').find('i.bi-exclamation-circle').remove();
             $('#min8Caracteres').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             min8CaracteresValido = false ;
             valido = false;
@@ -318,6 +375,8 @@ function validarPassword() {
             
             $('#passwordSesion').addClass('is-invalid');
 
+            $('#passwordSesion').focus() ;
+
             max15CaracteresValido = false ;
             valido = false;
         }
@@ -337,7 +396,10 @@ function validarPassword() {
             $('#contieneMayuscula').find('i.bi-check-circle').remove();
             $('#contieneMayuscula').find('i.bi-exclamation-circle').remove();
             $('#contieneMayuscula').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             contieneMayusculaValido = false ;
             valido = false;
@@ -358,7 +420,10 @@ function validarPassword() {
             $('#contieneMinuscula').find('i.bi-check-circle').remove();
             $('#contieneMinuscula').find('i.bi-exclamation-circle').remove();
             $('#contieneMinuscula').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             contieneMinusculaValido = false ;
             valido = false;
@@ -379,7 +444,10 @@ function validarPassword() {
             $('#contieneDigito').find('i.bi-check-circle').remove();
             $('#contieneDigito').find('i.bi-exclamation-circle').remove();
             $('#contieneDigito').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             contieneDigitoValido = false ;
             valido = false;
@@ -400,7 +468,10 @@ function validarPassword() {
             $('#noContieneEspacios').find('i.bi-check-circle').remove();
             $('#noContieneEspacios').find('i.bi-exclamation-circle').remove();
             $('#noContieneEspacios').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             noContieneEspaciosValido = false ;
             valido = false;
@@ -421,7 +492,10 @@ function validarPassword() {
             $('#contieneCaracterEspecial').find('i.bi-check-circle').remove();
             $('#contieneCaracterEspecial').find('i.bi-exclamation-circle').remove();
             $('#contieneCaracterEspecial').prepend('<i class="bi bi-exclamation-circle"></i> ');
+
             $('#passwordSesion').addClass('is-invalid');
+
+            $('#passwordSesion').focus() ;
 
             contieneCaracterEspecialValido = false ;
             valido = false;
@@ -453,10 +527,78 @@ function validarPassword() {
     return valido ;
 }
 
+// Comprueba si la repetición de la contraseña coincide
+
+function validarRepetirPassword() {
+
+    let valido = false;
+    
+    if ($('#passwordRepetidoSesion').val().trim().length === 0) // Si está vacío
+    {
+        $('#passwordRepetidoSesionHelp').addClass('text-danger').text("El campo no puede estar vacío");
+        $('#passwordRepetidoSesion').addClass('is-invalid');
+
+        $('#passwordRepetidoSesion').focus() ;
+
+        valido = false;
+    }
+    else // Si no está vacío
+    {
+
+        if (!passwordValido)
+        {
+            $('#passwordRepetidoSesionHelp').addClass('text-danger').text("La contraseña aún no es válida") ;
+            $('#passwordRepetidoSesion').addClass('is-invalid');
+        }
+        else if ($('#passwordRepetidoSesion').val() != $('#passwordSesion').val() && passwordValido) {
+            $('#passwordRepetidoSesionHelp').addClass('text-danger').text("La contraseña no coincide") ;
+
+            $('#passwordRepetidoSesion').addClass('is-invalid');
+
+            $('#passwordRepetidoSesion').focus() ;
+
+            valido = false;
+        }
+        else 
+        {
+            $('#passwordRepetidoSesionHelp').removeClass('text-danger').text("Obligatorio");
+            $('#passwordRepetidoSesion').removeClass('is-invalid');
+
+            $('#passwordRepetidoSesion').addClass('is-valid');
+
+            valido = true;
+        }
+
+    }
+
+    return valido ;
+}
+
+
+// Comprueba si todos los campos del formulario son válidos
+
+function validarFormulario() {
+    
+    
+    if (nombreUsuarioValido && emailValido && passwordValido && passwordRepetirValido && nombreUsuarioYaExiste && emailYaExiste)
+    {
+        $('#errorFormRegistro').empty() ;
+        
+        formularioValido = true ;
+    }
+    else
+    {
+        $('#errorFormRegistro').text("Hay errores en el formulario") ;
+
+        formularioValido = false ;
+    }
+
+}
+
 
 function comenzar() {
 
-    enviarFormularioRegistro();
+    
 }
 
 window.addEventListener("load", comenzar, false);

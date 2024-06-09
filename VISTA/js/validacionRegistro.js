@@ -108,6 +108,16 @@ $('#emailSesion').keyup(function () {
     validarEmail();
 })
 
+
+$('#passwordSesion').keyup(function () {
+
+    validarPassword();
+})
+
+$(document).ready(function() {
+    $('#listaErroresPassword').hide(); // Oculta la lista al cargar la página
+});
+
 // -------------- MÉTODOS AUXILIARES -----------------
 
 
@@ -231,6 +241,209 @@ function validarEmail() {
             $('#emailSesion').removeClass('is-invalid');
 
             $('#emailSesion').addClass('is-valid');
+
+            valido = true;
+        }
+
+    }
+
+    return valido ;
+}
+
+
+// Comprueba formato de password
+
+
+function validarPassword() {
+
+    let valido = false;
+
+    let min8CaracteresValido = false ;
+    let max15CaracteresValido = false ;
+    let contieneMayusculaValido = false ;
+    let contieneMinusculaValido = false ;
+    let contieneDigitoValido = false ;
+    let noContieneEspaciosValido = false ;
+    let contieneCaracterEspecialValido = false ;
+    
+    const min8Caracteres = /^.{8,}$/ ; // Mínimo 8 caracteres
+    const max15Caracteres = /^.{8,15}$/ ; // Máximo 15 caracteres
+    const contieneMayuscula = /[A-Z]/ ; // Debe contener al menos una mayúscula
+    const contieneMinuscula = /[a-z]/ ; // Debe contener al menos una minúscula
+    const contieneDigito = /\d/ ; // Debe contener al menos un dígito
+    const noContieneEspacios = /^\S+$/ ; // No debe contener espacios
+    const contieneCaracterEspecial = /[¡!@#$%^&*(),.¿?":{}|<>_/\\\'\'ºª·€¬=\[\]\+\-";]/ ; // Debe contener al menos un carácter especial ; // Debe contener al menos un carácter especial
+
+    if ($('#passwordSesion').val().trim().length === 0) // Si está vacío
+    {
+        $('#listaErroresPassword').hide() ; // Oculto la lista de errores
+        $('#passwordSesionHelp').addClass('text-danger').text("La contraseña no puede estar vacía");
+        $('#passwordSesion').addClass('is-invalid');
+
+        valido = false;
+    }
+    else // Si no está vacío
+    {
+
+        $('#listaErroresPassword').show() ;
+        $('#passwordSesionHelp').removeClass('text-danger').text("Obligatorio");
+
+        if (!min8Caracteres.test($('#passwordSesion').val())) // Si no cumple con el mínimo de caracteres
+        {
+            $('#min8Caracteres').removeClass('text-success').addClass('text-danger') ;
+            $('#min8Caracteres').find('i.bi-check-circle').remove();
+            $('#min8Caracteres').find('i.bi-exclamation-circle').remove();
+            $('#min8Caracteres').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            min8CaracteresValido = false ;
+            valido = false;
+        }
+        else // Si es correcto ponlo en verde
+        {
+            $('#min8Caracteres').removeClass('text-danger').addClass('text-success') ;
+            $('#min8Caracteres').find('i.bi-exclamation-circle').remove();
+            $('#min8Caracteres').find('i.bi-check-circle').remove();
+            $('#min8Caracteres').prepend('<i class="bi bi-check-circle"></i> ');
+
+            min8CaracteresValido = true ;
+        }
+        
+        if (!max15Caracteres.test($('#passwordSesion').val())) // Si no cumple con el máximo de caracteres
+        {
+            $('#max15Caracteres').removeClass('text-success').addClass('text-danger') ;
+            $('#max15Caracteres').find('i.bi-check-circle').remove();
+            $('#max15Caracteres').find('i.bi-exclamation-circle').remove();
+            $('#max15Caracteres').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            
+            $('#passwordSesion').addClass('is-invalid');
+
+            max15CaracteresValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#max15Caracteres').removeClass('text-danger').addClass('text-success') ;
+            $('#max15Caracteres').find('i.bi-exclamation-circle').remove();
+            $('#max15Caracteres').find('i.bi-check-circle').remove();
+            $('#max15Caracteres').prepend('<i class="bi bi-check-circle"></i> ');
+
+            max15CaracteresValido = true ;
+        }
+
+        if (!contieneMayuscula.test($('#passwordSesion').val())) // Si no cumple con la mayúscula
+        {
+            $('#contieneMayuscula').removeClass('text-success').addClass('text-danger') ;
+            $('#contieneMayuscula').find('i.bi-check-circle').remove();
+            $('#contieneMayuscula').find('i.bi-exclamation-circle').remove();
+            $('#contieneMayuscula').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            contieneMayusculaValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#contieneMayuscula').removeClass('text-danger').addClass('text-success') ;
+            $('#contieneMayuscula').find('i.bi-exclamation-circle').remove();
+            $('#contieneMayuscula').find('i.bi-check-circle').remove();
+            $('#contieneMayuscula').prepend('<i class="bi bi-check-circle"></i> ');
+
+            contieneMayusculaValido = true ;
+        }
+
+         if (!contieneMinuscula.test($('#passwordSesion').val())) // Si no cumple con la minúscula
+        {
+            $('#contieneMinuscula').removeClass('text-success').addClass('text-danger') ;
+            $('#contieneMinuscula').find('i.bi-check-circle').remove();
+            $('#contieneMinuscula').find('i.bi-exclamation-circle').remove();
+            $('#contieneMinuscula').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            contieneMinusculaValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#contieneMinuscula').removeClass('text-danger').addClass('text-success') ;
+            $('#contieneMinuscula').find('i.bi-exclamation-circle').remove();
+            $('#contieneMinuscula').find('i.bi-check-circle').remove();
+            $('#contieneMinuscula').prepend('<i class="bi bi-check-circle"></i> ');
+
+            contieneMinusculaValido = true ;
+        }
+
+        if (!contieneDigito.test($('#passwordSesion').val())) // Si no cumple con el dígito
+        {
+            $('#contieneDigito').removeClass('text-success').addClass('text-danger') ;
+            $('#contieneDigito').find('i.bi-check-circle').remove();
+            $('#contieneDigito').find('i.bi-exclamation-circle').remove();
+            $('#contieneDigito').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            contieneDigitoValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#contieneDigito').removeClass('text-danger').addClass('text-success') ;
+            $('#contieneDigito').find('i.bi-exclamation-circle').remove();
+            $('#contieneDigito').find('i.bi-check-circle').remove();
+            $('#contieneDigito').prepend('<i class="bi bi-check-circle"></i> ');
+
+            contieneDigitoValido = true ;
+        }
+
+        if (!noContieneEspacios.test($('#passwordSesion').val())) // Si contiene espacios
+        {
+            $('#noContieneEspacios').removeClass('text-success').addClass('text-danger') ;
+            $('#noContieneEspacios').find('i.bi-check-circle').remove();
+            $('#noContieneEspacios').find('i.bi-exclamation-circle').remove();
+            $('#noContieneEspacios').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            noContieneEspaciosValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#noContieneEspacios').removeClass('text-danger').addClass('text-success') ;
+            $('#noContieneEspacios').find('i.bi-exclamation-circle').remove();
+            $('#noContieneEspacios').find('i.bi-check-circle').remove();
+            $('#noContieneEspacios').prepend('<i class="bi bi-check-circle"></i> ');
+
+            noContieneEspaciosValido = true ;
+        }
+
+        if (!contieneCaracterEspecial.test($('#passwordSesion').val())) // Si no cumple con el carácter especial
+        {
+            $('#contieneCaracterEspecial').removeClass('text-success').addClass('text-danger') ;
+            $('#contieneCaracterEspecial').find('i.bi-check-circle').remove();
+            $('#contieneCaracterEspecial').find('i.bi-exclamation-circle').remove();
+            $('#contieneCaracterEspecial').prepend('<i class="bi bi-exclamation-circle"></i> ');
+            $('#passwordSesion').addClass('is-invalid');
+
+            contieneCaracterEspecialValido = false ;
+            valido = false;
+        }
+        else
+        {
+            $('#contieneCaracterEspecial').removeClass('text-danger').addClass('text-success') ;
+            $('#contieneCaracterEspecial').find('i.bi-exclamation-circle').remove();
+            $('#contieneCaracterEspecial').find('i.bi-check-circle').remove();
+            $('#contieneCaracterEspecial').prepend('<i class="bi bi-check-circle"></i> ');
+
+            contieneCaracterEspecialValido = true ;
+        }
+        
+        if (min8CaracteresValido && max15CaracteresValido && contieneMayusculaValido && contieneMinusculaValido && contieneDigitoValido && noContieneEspaciosValido && contieneCaracterEspecialValido)
+            // Si todos los requisitos de la contraseña son válidos
+        { 
+            $('#passwordSesionHelp').removeClass('text-danger').text("Obligatorio");
+            $('#listaErroresPassword').hide();
+            $('#passwordSesion').removeClass('is-invalid');
+
+            $('#passwordSesion').addClass('is-valid');
 
             valido = true;
         }

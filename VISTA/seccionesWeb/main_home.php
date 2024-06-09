@@ -73,6 +73,15 @@
                                                 <label for="passwordSesion" class="form-label"> Contraseña </label>
                                                 <input type="password" class="form-control" id="passwordSesion" name="password">
                                                 <div id="passwordSesionHelp" class="form-text"> Obligatoria </div>
+                                                <ul class="list-unstyled" id="listaErroresPassword">
+                                                    <li id="min8Caracteres" class="form-text text-danger"> <i class="bi bi-exclamation-circle"></i> Mínimo 8 caracteres </li>
+                                                    <li id="max15Caracteres" class="form-text text-danger"> <i class="bi bi-exclamation-circle"></i> Máximo 15 caracteres </li>
+                                                    <li id="contieneMayuscula" class="form-text text-danger"> <i class="bi bi-exclamation-circle"></i> Debe contener al menos una mayúscula </li>
+                                                    <li id="contieneMinuscula" class="form-text text-danger"> <i class="bi bi-exclamation-circle"></i> Debe contener al menos una minúscula </li>
+                                                    <li id="contieneDigito" class="form-text text-danger"> <i class="bi bi-exclamation-circle"></i> Debe contener al menos un dígito </li>
+                                                    <li id="noContieneEspacios" class="form-text text-danger">  <i class="bi bi-exclamation-circle"></i> No debe contener espacios </li>
+                                                    <li id="contieneCaracterEspecial" class="form-text text-danger">  <i class="bi bi-exclamation-circle"></i> Debe contener al menos un carácter especial </li>
+                                                </ul>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="passwordSesion" class="form-label"> Repetir contraseña </label>

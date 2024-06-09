@@ -1,8 +1,8 @@
 
 <?php
 
-require_once 'CONTROL/class/Usuario.php' ;
-require_once 'CONTROL/class/Authentication.php' ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Authentication.php" ;
 
 $ruta = $_SERVER['REQUEST_URI'];
 $metodo = $_SERVER['REQUEST_METHOD'];
@@ -25,19 +25,19 @@ if ($metodo == 'GET') {
             case "/":
             case "index":
             case "home":
-                require_once 'VISTA/home.php';
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/home.php" ;
                 break;
 
             case "buscador":
-                require_once 'VISTA/buscador.php';
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/buscador.php" ;
                 break;
 
             case "partida":
-                require_once 'VISTA/area_juego.php';
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/area_juego.php" ;
                 break;
 
             case "scattergories":
-                require_once 'VISTA/scattergories.php';
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/scattergories.php" ;
                 break;
 
             case "tukistan":
@@ -45,7 +45,7 @@ if ($metodo == 'GET') {
                 break;
 
             case "sushi_go":
-                require_once 'VISTA/sushiGo.php';
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/sushiGo.php" ;
                 break;
 
             default:
@@ -53,7 +53,7 @@ if ($metodo == 'GET') {
                 break;
         }
     } else {
-        require_once 'VISTA/home.php';
+        require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/home.php" ;
     }
     
 }

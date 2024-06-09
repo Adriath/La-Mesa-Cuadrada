@@ -1,6 +1,6 @@
 <?php
 
-require_once 'CONTROL/class/Usuario.php' ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
 
 
     // echo "Estoy dentro del POST del Registro.php." ;

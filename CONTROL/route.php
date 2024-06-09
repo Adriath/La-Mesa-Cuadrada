@@ -32,6 +32,10 @@ if ($metodo == 'GET') {
                 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/buscador.php" ;
                 break;
 
+            case "login":
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/login.php" ;
+                break;
+
             case "partida":
                 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/area_juego.php" ;
                 break;
@@ -57,13 +61,18 @@ if ($metodo == 'GET') {
     }
     
 }
-// else if ($metodo == 'POST') {
+else if ($metodo == 'POST') {
 
 
-//     if (isset($_POST['usuario']) && isset($_POST['password'])) {
-        
-//         require_once "CONTROL/Registro.php" ;
-//     }
+    if (isset($pagina)){
 
 
-// }
+        switch ($pagina) {
+            case "login":
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/login.php" ;
+                break;
+        }
+
+
+    }
+}

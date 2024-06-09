@@ -61,11 +61,13 @@
                                                 <label for="emailSesion" class="form-label"> Nombre usuario </label>
                                                 <input type="text" class="form-control" id="nombreUsuario" aria-describedby="nombreUsuarioHelp" name="nombreUsuario">
                                                 <div id="nombreUsuarioHelp" class="form-text"> Obligatorio </div>
+                                                <div id="nombreUsuarioError" class="form-text text-danger"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="emailSesion" class="form-label"> Email </label>
                                                 <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp" name="usuario">
                                                 <div id="emailSesionHelp" class="form-text"> Obligatorio </div>
+                                                <div id="emailSesionError" class="form-text text-danger"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="passwordSesion" class="form-label"> Contraseña </label>

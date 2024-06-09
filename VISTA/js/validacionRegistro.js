@@ -95,6 +95,9 @@ function enviarFormularioRegistro() {
 
 // -------------- MÉTODOS AUXILIARES -----------------
 
+
+// Comprueba nombre de usuario
+
 function compruebaNombreUsuario(datos) {
     
     let nombreInput = $('#nombreUsuario').val() ; // Obtenemos el nombre de usuario introducido por el usuario
@@ -105,14 +108,19 @@ function compruebaNombreUsuario(datos) {
 
     if (usuarioEncontrado) {
         // console.log("El usuario existe");
-        $('#nombreUsuarioHelp').addClass('text-danger').text("El nombre de usuario ya existe");
+        $('#nombreUsuarioError').text("El nombre de usuario ya existe");
+        $('#nombreUsuario').addClass('is-invalid');
         
     } 
     else {
         // console.log("El usuario no existe");
-        $('#nombreUsuarioHelp').removeClass('text-danger').text("Obligatorio");
+        $('#nombreUsuarioError').empty();
+        $('#nombreUsuario').removeClass('is-invalid');
     }
 }
+
+
+// Comprueba email
 
 function compruebaUsuario(datos) {
     
@@ -124,12 +132,14 @@ function compruebaUsuario(datos) {
 
     if (usuarioEncontrado) {
         // console.log("El usuario existe");
-        $('#emailSesionHelp').addClass('text-danger').text("El usuario ya existe");
+        $('#emailSesionError').text("El usuario ya existe");
+        $('#emailSesion').addClass('is-invalid');
         
     } 
     else {
         // console.log("El usuario no existe");
-        $('#emailSesionHelp').removeClass('text-danger').text("Obligatorio");
+        $('#emailSesionError').empty();
+        $('#emailSesion').removeClass('is-invalid');
     }
 }
 

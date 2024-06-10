@@ -24,14 +24,16 @@ $formularioValido = false ;
  * Comprueba si el nombre es correcto.
  * 
  * @param string $nombre El nombre a comprobar.
+ * 
+ * @return bool true si el nombre es correcto, false en caso contrario.
  */
-function nombreValido($nombre) {
+function validarNombre($nombre) {
 
     $valido = false ;
     $limiteCaracteres = 80 ;
     $dobleEspacio = '/  /u'; // No se permiten dos espacios seguidos
 
-    $nombre = trim($nombre) ; // Elimina los espacios
+    // $nombre = trim($nombre) ; // Elimina los espacios
 
     if (empty($nombre)) // Si el nombre está vacío
     {
@@ -60,6 +62,8 @@ function nombreValido($nombre) {
  * Valida el formato del correo electrónico.
  * 
  * @param string $email El correo a comprobar.
+ * 
+ * @return bool true si el correo es correcto, false en caso contrario.
  */
 function validarEmail($email) {
 
@@ -100,6 +104,7 @@ function validarEmail($email) {
  * - Debe contener al menos un caracter especial
  * 
  * @param string $password La contraseña a comprobar.
+ * @return bool true si la contraseña es correcta, false en caso contrario
  */
 function validarPassword($password) {
     
@@ -211,6 +216,13 @@ function validarPassword($password) {
 }
 
 
+/**
+ * Compara dos passwords.
+ * 
+ * @param string $password El password introducido por el usuario
+ * @param string $passwordRepetida El password repetido por el usuario
+ * @return bool true si los passwords son iguales, false en caso contrario
+ */
 function validarPasswordRepetida($password, $passwordRepetida) {
     
     $valido = false ;
@@ -227,12 +239,32 @@ function validarPasswordRepetida($password, $passwordRepetida) {
     return $valido ;
 }
 
-function validarFormulario($password, $passwordRepetida) {
 
+
+$nombre = $_POST['nombreUsuario'] ;
+$email = $_POST['usuario'] ;
+$password = $_POST['password'] ;
+$passwordRepetida = $_POST['passwordRepetida'] ;
+
+$nombreValido = false ;
+$emailValido = false ;
+$passwordValido = false ;
+$passwordRepetidaValida = false ;
+
+$nombreYaExiste = false ;
+$emailYaExiste = false ;
+
+$formularioValido = false ;
+
+function validarFormulario($nombre, $email, $password, $passwordRepetida) {
+
+    $nombreValido = validarNombre($nombre) ;
+    $emailValido = validarEmail($email) ;
+    $passwordValido = validarPassword($password) ;  
     $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
     
 
-    if ($passwordRepetidaValida)
+    if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida)
     {
         echo "Es valido" ;
     }
@@ -242,4 +274,4 @@ function validarFormulario($password, $passwordRepetida) {
     }
 }
 
-validarFormulario($password,$passwordRepetida) ;
+validarFormulario($nombre, $email, $password, $passwordRepetida) ;

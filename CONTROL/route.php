@@ -68,8 +68,8 @@ else if ($metodo == 'POST') {
 
 
         switch ($pagina) {
-            case "login":
-                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/login.php" ;
+            case "registro":
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/registro.php" ;
                 break;
         }
 

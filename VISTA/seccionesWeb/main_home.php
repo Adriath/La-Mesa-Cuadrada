@@ -51,7 +51,7 @@
                                         <!-- De momento es un ejemplo. El botón de envío estará fuerad el formulario (ahora mismo no hay etiquetas form).
                                         El botón se puede asociar con JavaScript de manera sencilla aunque esté fuera de las etiquetas. -->
 
-                                        <form id="formRegistro" action="login" method="POST">
+                                        <form id="formRegistro" action="registro" method="POST">
                                             <!-- <div class="mb-3">
                                                 <label for="emailSesion" class="form-label"> Nombre usuario </label>
                                                 <input type="email" class="form-control" id="emailSesion" aria-describedby="emailHelp">

@@ -273,13 +273,13 @@ function compruebaUsuario($nombre, $email) {
             if ($row["nombreUsuario"] === $nombre){ // Si el nombre de usuario coincide...
 
                 $valido = false ; // ...no es válido
-                echo "Usuario ya existe" ;
+                // echo "Usuario ya existe" ;
             }
         
             if ($row["email"] === $email){ // Si el email coincide...
 
                 $valido = false ; // ...no es válido
-                echo "Email ya existe" ;
+                // echo "Email ya existe" ;
             }   
         }
     }
@@ -300,7 +300,31 @@ function validarFormulario($nombre, $email, $password, $passwordRepetida) {
 
     if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida && $usuarioYaExiste)
     {
-        echo "Es valido" ;
+        $_conexion = new BBDD() ; // Creamos el objeto conexión
+
+        $conexion = $_conexion->getConexion();
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT); // Hashear la contraseña antes de guardarla
+
+        $estado = "Activo" ;
+    
+        $stmt = $conexion->prepare("INSERT INTO usuario (nombreUsuario, email, password, estado) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nombre, $email, $passwordHash, $estado);
+    
+        if ($stmt->execute()) {
+
+            echo "Registro exitoso";
+            header("Location: http://localhost/La_Mesa_Cuadrada/home?registrado=true") ;
+            
+            
+        } else {
+
+            header("Location: http://localhost/La_Mesa_Cuadrada/home?registrado=false") ;
+            // echo "Error al registrar: " . $stmt->error;
+        }
+    
+        $stmt->close();
+        $conexion->close();
     }
     else
     {

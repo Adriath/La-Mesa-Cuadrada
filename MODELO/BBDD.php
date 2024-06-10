@@ -97,4 +97,10 @@ class BBDD{
         return md5($string) ;
     }
 
+    public function getConexion(){
+
+        return $this->conexion ;
+    }
+
+
 }

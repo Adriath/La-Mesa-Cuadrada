@@ -1,5 +1,7 @@
 <?php
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
+
 echo "Esta es la página Login.php" ;
 
 var_dump($_POST) ;
@@ -12,9 +14,7 @@ $passwordRepetida = $_POST['passwordRepetida'] ;
 $nombreValido = false ;
 $emailValido = false ;
 $passwordValido = false ;
-
-$nombreYaExiste = false ;
-$emailYaExiste = false ;
+$usuarioYaExiste = false ;
 
 $formularioValido = false ;
 
@@ -240,31 +240,79 @@ function validarPasswordRepetida($password, $passwordRepetida) {
 }
 
 
+// ----------------- VALIDACIONES CON BBDD -----------------
 
-$nombre = $_POST['nombreUsuario'] ;
-$email = $_POST['usuario'] ;
-$password = $_POST['password'] ;
-$passwordRepetida = $_POST['passwordRepetida'] ;
+/**
+ * Comprueba si el usuario ya existe revisando el nombre de usuario y el email en la base de datos.
+ * 
+ * @param string $nombre El nombre de usuario introducido por el usuario.
+ * @param string $email El email introducido por el usuario.
+ * 
+ * return bool true si el usuario ya existe, false en caso contrario.
+ */
+function compruebaUsuario($nombre, $email) {
 
-$nombreValido = false ;
-$emailValido = false ;
-$passwordValido = false ;
-$passwordRepetidaValida = false ;
+    $_conexion = new BBDD() ; // Creamos el objeto conexión
 
-$nombreYaExiste = false ;
-$emailYaExiste = false ;
+    $valido = true ; // Daremos por hecho que es válido
 
-$formularioValido = false ;
+    $conexion = $_conexion->getConexion() ;
 
-function validarFormulario($nombre, $email, $password, $passwordRepetida) {
+    // Conectamos con la base de datos
 
-    $nombreValido = validarNombre($nombre) ;
-    $emailValido = validarEmail($email) ;
-    $passwordValido = validarPassword($password) ;  
-    $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
+    $stmt = $conexion->prepare("SELECT * FROM usuario WHERE nombreUsuario = ? OR email = ?") ;
+    $stmt->bind_param("ss", $nombre, $email) ;
+    $stmt->execute() ;
+    $result = $stmt->get_result() ;
+
+    if ($result->num_rows > 0) // Si hay resultados
+    {
+
+        while ($row = $result->fetch_assoc()){ // Recorremos todos los resultados
+
+            if ($row["nombreUsuario"] === $nombre){ // Si el nombre de usuario coincide...
+
+                $valido = false ; // ...no es válido
+                // echo "Usuario ya existe" ;
+            }
+        
+            if ($row["email"] === $email){ // Si el email coincide...
+
+                $valido = false ; // ...no es válido
+                // echo "Email ya existe" ;
+            }   
+        }
+    }
+
+    return $valido ;
+}
+
+// ----------------- VALIDACIÓN DE FORMULARIO -----------------
+
+// function validarFormulario($nombre, $email, $password, $passwordRepetida) {
+
+//     $nombreValido = validarNombre($nombre) ;
+//     $emailValido = validarEmail($email) ;
+//     $passwordValido = validarPassword($password) ;  
+//     $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
     
 
-    if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida)
+//     if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida)
+//     {
+//         echo "Es valido" ;
+//     }
+//     else
+//     {
+//         echo "No es válido" ;
+//     }
+// }
+
+function validarFormulario($nombre, $email) {
+
+    $usuarioYaExiste = compruebaUsuario($nombre, $email) ;
+    
+
+    if ($usuarioYaExiste)
     {
         echo "Es valido" ;
     }
@@ -274,4 +322,4 @@ function validarFormulario($nombre, $email, $password, $passwordRepetida) {
     }
 }
 
-validarFormulario($nombre, $email, $password, $passwordRepetida) ;
+validarFormulario($nombre, $email) ;

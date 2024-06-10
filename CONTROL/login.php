@@ -53,6 +53,11 @@ function nombreValido($nombre) {
     return $valido ;
 }
 
+/**
+ * Valida el formato del correo electrónico.
+ * 
+ * @param string $email El correo a comprobar.
+ */
 function validarEmail($email) {
 
     $regexEmail = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'; // La expresión regular del correo electrónico
@@ -81,12 +86,122 @@ function validarEmail($email) {
 }
 
 
-function validarFormulario($email) {
+function validarPassword($password) {
+    
+    $valido = false ;
+
+    $min8CaracteresValido = false ;
+    $max15CaracteresValido = false ;
+    $contieneMayusculaValido = false ;
+    $contieneMinusculaValido = false ;
+    $contieneDigitoValido = false ;
+    $noContieneEspaciosValido = false ;
+    $contieneCaracterEspecialValido = false ;
+
+    $min8Caracteres = '/^.{8,}$/'; // Mínimo 8 caracteres
+    $max15Caracteres = '/^.{8,15}$/'; // Máximo 15 caracteres
+    $contieneMayuscula = '/[A-Z]/'; // Debe contener al menos una mayúscula
+    $contieneMinuscula = '/[a-z]/'; // Debe contener al menos una minúscula
+    $contieneDigito = '/\d/'; // Debe contener al menos un dígito
+    $noContieneEspacios = '/^\S+$/'; // No debe contener espacios
+    $contieneCaracterEspecial = '/[¡!@#$%^&*(),.¿?":{}|<>_\/\\\'\'ºª·€¬=\[\]\+\-";]/u'; // Debe contener al menos un carácter especial
+
+
+    // $password = trim($password) ; // Elimina los espacios
+
+    if (empty($password)) // Si el password está vacío
+    {
+        $valido = false ;
+    }
+    else // Si no está vacío
+    {
+        if (!preg_match($min8Caracteres, $password)) // Si no cumple con el mínimo de caracteres
+        {
+            $min8CaracteresValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $min8CaracteresValido = true ;
+        }
+
+        if (!preg_match($max15Caracteres, $password)) // Si no cumple con el máximo de caracteres
+        {
+            $max15CaracteresValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $max15CaracteresValido = true ;
+        }
+
+        if (!preg_match($contieneMayuscula, $password)) // Si no contiene una mayúscula
+        {
+            $contieneMayusculaValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $contieneMayusculaValido = true ;
+        }
+
+        if (!preg_match($contieneMinuscula, $password)) // Si no contiene una minúscula
+        {
+            $contieneMinusculaValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $contieneMinusculaValido = true ;
+        }
+
+        if (!preg_match($contieneDigito, $password)) // Si no contiene un dígito
+        {
+            $contieneDigitoValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $contieneDigitoValido = true ;
+        }
+
+        if (!preg_match($noContieneEspacios, $password)) // Si contiene espacios
+        {
+            $noContieneEspaciosValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $noContieneEspaciosValido = true ;
+        }
+
+        if (!preg_match($contieneCaracterEspecial, $password)) // Si no contiene caracteres especiales
+        {
+            $contieneCaracterEspecialValido = false ;
+            $valido = false ;
+        }
+        else
+        {
+            $contieneCaracterEspecialValido = true ;
+        }
+
+        if ($min8CaracteresValido && $max15CaracteresValido && $contieneMayusculaValido && $contieneMinusculaValido && $contieneDigitoValido && $noContieneEspaciosValido && $contieneCaracterEspecialValido)
+        {
+            $valido = true ;
+        }
+    }
+
+    return $valido ;
+
+}
+
+
+function validarFormulario($password) {
 
     // $nombreValido = nombreValido($nombre) ;
-    $emailValido = validarEmail($email) ;
+    $passwordValido = validarPassword($password) ;
 
-    if ($emailValido)
+    if ($passwordValido)
     {
         echo "Es valido" ;
     }
@@ -96,4 +211,4 @@ function validarFormulario($email) {
     }
 }
 
-validarFormulario($email) ;
+validarFormulario($password) ;

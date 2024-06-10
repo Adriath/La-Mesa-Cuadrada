@@ -17,14 +17,14 @@ function enviarFormularioRegistro() {
     $('#botonEnviarRegistro').click(function () {
 
             
-        if (formularioValido){
+        // if (formularioValido){
 
             $('#formRegistro').submit();
-        }
-        else
-        {
-            $("#errorFormRegistro").text("REVISA EL FORMULARIO");
-        }
+        // }
+        // else
+        // {
+        //     $("#errorFormRegistro").text("REVISA EL FORMULARIO");
+        // }
 
 
         
@@ -141,7 +141,7 @@ $('#passwordRepetidoSesion').keyup(function () {
     passwordRepetirValido = validarRepetirPassword() ;
 })
 
-$('#nombreUsuario, #emailSesion, #passwordSesion, #passwordRepetidoSesion').on('keyup', validarFormulario) ;
+// $('#nombreUsuario, #emailSesion, #passwordSesion, #passwordRepetidoSesion').on('keyup', validarFormulario) ;
 
 
 // -------------- MÉTODOS AUXILIARES -----------------

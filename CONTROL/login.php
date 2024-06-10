@@ -273,13 +273,13 @@ function compruebaUsuario($nombre, $email) {
             if ($row["nombreUsuario"] === $nombre){ // Si el nombre de usuario coincide...
 
                 $valido = false ; // ...no es válido
-                // echo "Usuario ya existe" ;
+                echo "Usuario ya existe" ;
             }
         
             if ($row["email"] === $email){ // Si el email coincide...
 
                 $valido = false ; // ...no es válido
-                // echo "Email ya existe" ;
+                echo "Email ya existe" ;
             }   
         }
     }
@@ -289,30 +289,16 @@ function compruebaUsuario($nombre, $email) {
 
 // ----------------- VALIDACIÓN DE FORMULARIO -----------------
 
-// function validarFormulario($nombre, $email, $password, $passwordRepetida) {
+function validarFormulario($nombre, $email, $password, $passwordRepetida) {
 
-//     $nombreValido = validarNombre($nombre) ;
-//     $emailValido = validarEmail($email) ;
-//     $passwordValido = validarPassword($password) ;  
-//     $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
-    
-
-//     if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida)
-//     {
-//         echo "Es valido" ;
-//     }
-//     else
-//     {
-//         echo "No es válido" ;
-//     }
-// }
-
-function validarFormulario($nombre, $email) {
-
+    $nombreValido = validarNombre($nombre) ;
+    $emailValido = validarEmail($email) ;
+    $passwordValido = validarPassword($password) ;  
+    $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
     $usuarioYaExiste = compruebaUsuario($nombre, $email) ;
     
 
-    if ($usuarioYaExiste)
+    if ($nombreValido && $emailValido && $passwordValido && $passwordRepetidaValida && $usuarioYaExiste)
     {
         echo "Es valido" ;
     }
@@ -322,4 +308,19 @@ function validarFormulario($nombre, $email) {
     }
 }
 
-validarFormulario($nombre, $email) ;
+// function validarFormulario($nombre, $email) {
+
+//     $usuarioYaExiste = compruebaUsuario($nombre, $email) ;
+    
+
+//     if ($usuarioYaExiste)
+//     {
+//         echo "Es valido" ;
+//     }
+//     else
+//     {
+//         echo "No es válido" ;
+//     }
+// }
+
+validarFormulario($nombre, $email, $password, $passwordRepetida) ;

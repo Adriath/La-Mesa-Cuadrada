@@ -17,14 +17,14 @@ function enviarFormularioRegistro() {
     $('#botonEnviarRegistro').click(function () {
 
             
-        // if (formularioValido){
+        if (formularioValido){
 
             $('#formRegistro').submit();
-        // }
-        // else
-        // {
-        //     $("#errorFormRegistro").text("REVISA EL FORMULARIO");
-        // }
+        }
+        else
+        {
+            $("#errorFormRegistro").text("REVISA EL FORMULARIO");
+        }
 
 
         
@@ -156,8 +156,9 @@ function compruebaNombreUsuario(datos) {
     let nombreInput = $('#nombreUsuario').val(); // Obtenemos el nombre de usuario introducido por el usuario
     nombreInput = nombreInput.trim();
     nombreInput = nombreInput.toLowerCase();
+    nombreInput = nombreInput.normalize('NFD').replace(/[\u0300-\u036f]/g, ""); // Normalizar y eliminar acentos
 
-    let usuarioEncontrado = datos.find(usuario => usuario.nombreUsuario === nombreInput); // Buscamos el usuario en el array de usuarios
+    let usuarioEncontrado = datos.find(usuario => usuario.nombreUsuario.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase() === nombreInput); // Buscamos el usuario en el array de usuarios ignorando tildes
 
     if (usuarioEncontrado) {
         // console.log("El usuario existe");
@@ -217,6 +218,7 @@ function validarNombreUsuario() {
     let valido = false;
     const limiteCaracteres = 80;
     const dobleEspacio = /  /g; // No se permiten dos espacios seguidos
+
 
     if ($('#nombreUsuario').val().trim().length === 0) // Si está vacío
     {

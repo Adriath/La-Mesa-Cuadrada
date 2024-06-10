@@ -76,6 +76,8 @@ function enviarFormularioRegistro() {
 
 
                 nombreUsuarioYaExiste = compruebaNombreUsuario(response);
+                nombreUsuarioValido = validarNombreUsuario();
+                validarFormulario();
 
             },
             error: function (xhr, status, error) {
@@ -107,6 +109,9 @@ function enviarFormularioRegistro() {
 
 
                 emailYaExiste = compruebaUsuario(response);
+                emailValido = validarEmail();
+                validarFormulario();
+                
 
             },
             error: function (xhr, status, error) {
@@ -120,16 +125,6 @@ function enviarFormularioRegistro() {
 
 // VALIDACIONES DE FORMATO
 
-$('#nombreUsuario').keyup(function () {
-
-    nombreUsuarioValido = validarNombreUsuario();
-})
-
-
-$('#emailSesion').keyup(function () {
-
-    emailValido = validarEmail();
-})
 
 
 $('#passwordSesion').keyup(function () {
@@ -168,7 +163,7 @@ function compruebaNombreUsuario(datos) {
         // console.log("El usuario existe");
         $('#nombreUsuarioError').text("El nombre de usuario ya existe");
         $('#nombreUsuario').addClass('is-invalid');
-        $('#nombreUsuario').focus() ;
+        // $('#nombreUsuario').focus() ;
 
         valido = false ;
     }
@@ -199,7 +194,7 @@ function compruebaUsuario(datos) {
         // console.log("El usuario existe");
         $('#emailSesionError').text("El usuario ya existe");
         $('#emailSesion').addClass('is-invalid');
-        $('#emailSesion').focus() ;
+        // $('#emailSesion').focus() ;
 
         valido = false ;
 
@@ -227,7 +222,7 @@ function validarNombreUsuario() {
     {
         $('#nombreUsuarioHelp').addClass('text-danger').text("El nombre de usuario no puede estar vacío");
         $('#nombreUsuario').addClass('is-invalid');
-        $('#nombreUsuario').focus() ;
+        // $('#nombreUsuario').focus() ;
 
         valido = false;
     }
@@ -236,14 +231,14 @@ function validarNombreUsuario() {
         if ($('#nombreUsuario').val().length > limiteCaracteres) {
             $('#nombreUsuarioHelp').addClass('text-danger').text("El nombre de usuario no puede superar los 50 caracteres");
             $('#nombreUsuario').addClass('is-invalid');
-            $('#nombreUsuario').focus() ;
+            // $('#nombreUsuario').focus() ;
 
             valido = false;
         }
         else if ($('#nombreUsuario').val().match(dobleEspacio)) {
             $('#nombreUsuarioHelp').addClass('text-danger').text("No se permiten dos espacios seguidos");
             $('#nombreUsuario').addClass('is-invalid');
-            $('#nombreUsuario').focus() ;
+            // $('#nombreUsuario').focus() ;
 
             valido = false;
         }
@@ -274,7 +269,7 @@ function validarEmail() {
     {
         $('#emailSesionHelp').addClass('text-danger').text("El email no puede estar vacío");
         $('#emailSesion').addClass('is-invalid');
-        $('#emailSesion').focus() ;
+        // $('#emailSesion').focus() ;
 
         valido = false;
     }
@@ -284,7 +279,7 @@ function validarEmail() {
         if (!regexEmail.test($('#emailSesion').val())) {
             $('#emailSesionHelp').addClass('text-danger').text("Formato de email incorrecto");
             $('#emailSesion').addClass('is-invalid');
-            $('#emailSesion').focus() ;
+            // $('#emailSesion').focus() ;
 
             valido = false;
         }
@@ -332,7 +327,7 @@ function validarPassword() {
         $('#listaErroresPassword').hide() ; // Oculto la lista de errores
         $('#passwordSesionHelp').addClass('text-danger').text("La contraseña no puede estar vacía");
         $('#passwordSesion').addClass('is-invalid');
-        $('#passwordSesion').focus() ;
+        // $('#passwordSesion').focus() ;
 
         valido = false;
     }
@@ -351,7 +346,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             min8CaracteresValido = false ;
             valido = false;
@@ -375,7 +370,7 @@ function validarPassword() {
             
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             max15CaracteresValido = false ;
             valido = false;
@@ -399,7 +394,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             contieneMayusculaValido = false ;
             valido = false;
@@ -423,7 +418,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             contieneMinusculaValido = false ;
             valido = false;
@@ -447,7 +442,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             contieneDigitoValido = false ;
             valido = false;
@@ -471,7 +466,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             noContieneEspaciosValido = false ;
             valido = false;
@@ -495,7 +490,7 @@ function validarPassword() {
 
             $('#passwordSesion').addClass('is-invalid');
 
-            $('#passwordSesion').focus() ;
+            // $('#passwordSesion').focus() ;
 
             contieneCaracterEspecialValido = false ;
             valido = false;
@@ -538,7 +533,7 @@ function validarRepetirPassword() {
         $('#passwordRepetidoSesionHelp').addClass('text-danger').text("El campo no puede estar vacío");
         $('#passwordRepetidoSesion').addClass('is-invalid');
 
-        $('#passwordRepetidoSesion').focus() ;
+        // $('#passwordRepetidoSesion').focus() ;
 
         valido = false;
     }
@@ -555,7 +550,7 @@ function validarRepetirPassword() {
 
             $('#passwordRepetidoSesion').addClass('is-invalid');
 
-            $('#passwordRepetidoSesion').focus() ;
+            // $('#passwordRepetidoSesion').focus() ;
 
             valido = false;
         }
@@ -578,6 +573,13 @@ function validarRepetirPassword() {
 // Comprueba si todos los campos del formulario son válidos
 
 function validarFormulario() {
+
+     // Verifica el estado de todas las validaciones
+
+     nombreUsuarioValido = validarNombreUsuario();
+     emailValido = validarEmail();
+     passwordValido = validarPassword();
+     passwordRepetirValido = validarRepetirPassword();
     
     
     if (nombreUsuarioValido && emailValido && passwordValido && passwordRepetirValido && nombreUsuarioYaExiste && emailYaExiste)

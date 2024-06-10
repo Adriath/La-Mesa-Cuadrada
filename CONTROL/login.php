@@ -25,7 +25,7 @@ function validarEmail($email) {
 $email1 = "ejemplo@dominio.com";
 $email2 = "incorrecto";
 
-if (validarEmail($email1)) {
+if (validarEmail($email2)) {
  echo "El correo electrónico $email1 es válido.";
 } else {
  echo "El correo electrónico $email1 no es válido.";

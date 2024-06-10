@@ -2,9 +2,12 @@
 
 echo "Esta es la página Login.php" ;
 
+var_dump($_POST) ;
+
 $nombre = $_POST['nombreUsuario'] ;
 $email = $_POST['usuario'] ;
 $password = $_POST['password'] ;
+$passwordRepetida = $_POST['passwordRepetida'] ;
 
 $nombreValido = false ;
 $emailValido = false ;
@@ -85,7 +88,19 @@ function validarEmail($email) {
     // return filter_var($email, FILTER_VALIDATE_EMAIL) ;
 }
 
-
+/**
+ * Comprueba si la contraseña es correcta.
+ * REQUISITOS:
+ * - Mínimo 8 caracteres
+ * - Máximo 15 caracteres
+ * - Debe contener al menos una mayúscula
+ * - Debe contener al menos una minúscula
+ * - Debe contener al menos un dígito
+ * - No debe contener espacios
+ * - Debe contener al menos un caracter especial
+ * 
+ * @param string $password La contraseña a comprobar.
+ */
 function validarPassword($password) {
     
     $valido = false ;
@@ -196,12 +211,28 @@ function validarPassword($password) {
 }
 
 
-function validarFormulario($password) {
+function validarPasswordRepetida($password, $passwordRepetida) {
+    
+    $valido = false ;
 
-    // $nombreValido = nombreValido($nombre) ;
-    $passwordValido = validarPassword($password) ;
+    if ($password === $passwordRepetida) {
 
-    if ($passwordValido)
+        $valido = true ; 
+
+    } else {
+
+        $valido = false ;
+    }
+
+    return $valido ;
+}
+
+function validarFormulario($password, $passwordRepetida) {
+
+    $passwordRepetidaValida = validarPasswordRepetida($password, $passwordRepetida) ;
+    
+
+    if ($passwordRepetidaValida)
     {
         echo "Es valido" ;
     }
@@ -211,4 +242,4 @@ function validarFormulario($password) {
     }
 }
 
-validarFormulario($password) ;
+validarFormulario($password,$passwordRepetida) ;

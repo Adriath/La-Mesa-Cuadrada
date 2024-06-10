@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="passwordSesion" class="form-label"> Repetir contraseña </label>
-                                                <input type="password" class="form-control" id="passwordRepetidoSesion">
+                                                <input type="password" class="form-control" id="passwordRepetidoSesion" name="passwordRepetida">
                                                 <div id="passwordRepetidoSesionHelp" class="form-text"> Obligatoria </div>
                                             </div>
                                         </form>

@@ -1,7 +1,4 @@
-<?php
 
-session_start() ;
-?>
 
 <!-- MIGAS DE PAN -->
 
@@ -13,7 +10,7 @@ session_start() ;
 
 if (isset($_SESSION["login"])) 
 {
-    echo 'ESTOY LOGEADO';
+    echo '<h1> Bienvenido ' . $_SESSION["login"] . ' </h1>' ;
 
     echo "<button class='btn btn-light' type='submit'> <a href='logout' class='btn btn-light'> Cerrar sesión </a> </button>" ;
 }

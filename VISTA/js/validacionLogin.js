@@ -92,6 +92,7 @@ $('#passwordLogin').keyup(function () {
             // Por ejemplo, mostrar los datos en algún lugar de tu página
             // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
 
+            $('#errorFormRegistroLogin').empty(); // Vacía el mensaje de error
 
             passwordExiste = compruebaPasswordLogin(response);
             console.log ("passwordExiste: " + passwordExiste); // Pruebas
@@ -189,7 +190,6 @@ function validarFormularioLogin() {
     $valido = false ;
 
     if ((usuarioExiste || emailExiste) && passwordExiste) {
-        $('#errorFormLogin').empty();
 
         $valido = true ;
     }

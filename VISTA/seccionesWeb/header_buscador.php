@@ -3,6 +3,17 @@
 session_start() ;
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
+
+if (isset($_GET["pagina"])) {
+
+    switch ($_GET["pagina"]) {
+
+        case "tuki":
+
+            // require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/seccionesWeb/" . $_GET["pagina"] . ".php" ;
+            break;
+    }
+}
 ?>
 
 

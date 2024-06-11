@@ -38,7 +38,15 @@
           <div data-bs-spy="scroll" data-bs-target="#areaJuego" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-image p-3 rounded-2" tabindex="0" style="background-image: url('VISTA/img/mesa_roja.jpg');">
             <section id="scrollspyHeading1">
                 <p>...</p>
-                <h1 class="text-center"> Área de juego </h1>
+                <h1 class="text-center">
+
+                <?php
+
+                  require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/seccionesWeb/juegos/". $_GET["pagina"] . "/". $_GET["pagina"] .".php" ;
+
+                ?>
+
+                </h1>
             </section>
             <h2 id="scrollspyHeading2" class="text-end me-5"> Tutorial </h2>
             <p>...</p>

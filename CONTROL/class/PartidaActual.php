@@ -9,6 +9,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Respon
  */
 class PartidaActual extends BBDD implements JsonSerializable {
     
+    private $idPartida ;
     private $numJugadores ;
     private $listaJugadores = array() ;
     private $listaGanadores = array() ;
@@ -18,7 +19,7 @@ class PartidaActual extends BBDD implements JsonSerializable {
     private $fecha ; // No sé cómo ponerla
     
     
-    public function __construct($numJugadores, $listaJugadores, $listaGanadores, $rondas, $puntos, $ganador, $fecha) {
+    public function __construct($numJugadores=null, $listaJugadores=null, $listaGanadores=null, $rondas=null, $puntos=null, $ganador=null, $fecha=null) {
         
         parent::__construct() ;
         $this->numJugadores = $numJugadores;

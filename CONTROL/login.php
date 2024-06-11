@@ -1,5 +1,7 @@
 <?php
 
+session_start() ;
+
 echo "Estamos en el login.php" ;
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;

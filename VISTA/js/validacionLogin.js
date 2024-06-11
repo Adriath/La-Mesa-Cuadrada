@@ -17,16 +17,16 @@ let formularioLoginValido = false;
 
 $('#botonEnviarLogin').click(function () {
 
-    // formularioLoginValido = validarFormularioLogin() ;
+    formularioLoginValido = validarFormularioLogin() ;
 
-    // if (formularioLoginValido){
+    if (formularioLoginValido){
 
     $('#formLogin').submit();
-    // }
-    // else
-    // {
-    //     $("#errorFormRegistroLogin").text("CREDENCIALES INCORRECTAS");
-    // }
+    }
+    else
+    {
+        $("#errorFormRegistroLogin").text("CREDENCIALES INCORRECTAS");
+    }
 
 });
 

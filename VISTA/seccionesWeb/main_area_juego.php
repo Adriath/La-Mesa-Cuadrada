@@ -1,5 +1,6 @@
 <!-- MIGAS DE PAN -->
 
+
 <nav style="--bs-breadcrumb-divider: '🔴';" aria-label="Migas de pan"> <!-- Insertar entre las comillas simples ('') el tipo de separador deseado -->
     <div class="container">
         <ol class="breadcrumb">
@@ -15,22 +16,24 @@
 
     <div class="container-fluid">
 
-        <nav id="areaJuego" class="navbar bg-body-tertiary px-3 mb-3">
-            <a class="navbar-brand pe-none" href="#">Navbar</a>
+        <nav id="areaJuego" class="navbar bg-body-terciary px-3 mb-3">
+            <a class="navbar-brand pe-none display-2 mx-auto" href="#"> 
+                <h1 class="display-2"> <?= $juego->getNombre() ?> </h1>
+            </a>
             <ul class="nav nav-pills">
               <li class="nav-item">
-                <a class="nav-link bg" href="#scrollspyHeading1"> PARTIDA </a>
+                <a class="nav-link partida bg-danger" href="#scrollspyHeading1"> PARTIDA </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#scrollspyHeading2"> Tutorial </a>
+                <a class="nav-link text-danger" href="#scrollspyHeading2"> Tutorial </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle text-danger" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"> Mäs opciones </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-                  <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                  <li><a class="dropdown-item" href="#scrollspyHeading3"> Opción adicional </a></li>
+                  <li><a class="dropdown-item" href="#scrollspyHeading4"> Opción adicional </a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+                  <li><a class="dropdown-item" href="#scrollspyHeading5"> Opción adicional </a></li>
                 </ul>
               </li>
             </ul>
@@ -48,13 +51,15 @@
 
                 </h1>
             </section>
-            <h2 id="scrollspyHeading2" class="text-end me-5"> Tutorial </h2>
+            <h2 id="scrollspyHeading2" class="display-2 fw-bold text-center my-4 me-5"> Tutorial </h2>
+            
+            <?= $juego->getTutorial()  ?>
+
+            <h2 id="scrollspyHeading3" class="display-2 fw-bold text-center my-4 me-5"> Opción adicional </h2>
             <p>...</p>
-            <h2 id="scrollspyHeading3" class="text-end me-5">Third heading</h2>
+            <h2 id="scrollspyHeading4" class="display-2 fw-bold text-center my-4 me-5"> Opción adicional </h2>
             <p>...</p>
-            <h2 id="scrollspyHeading4" class="text-end me-5">Fourth heading</h2>
-            <p>...</p>
-            <h2 id="scrollspyHeading5" class="text-end me-5">Fifth heading</h2>
+            <h2 id="scrollspyHeading5" class="display-2 fw-bold text-center my-4 me-5"> Opción adicional </h2>
             <p>...</p>
           </div>
 

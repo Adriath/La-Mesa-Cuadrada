@@ -30,6 +30,25 @@
     overflow-y: auto; /* Habilita el scroll vertical */
 }
 
+/* Estilo para los colores de los botones en el área de juego */
+.nav-pills .nav-link {
+    color: rgb(179, 61, 61);
+    background-color: white;
+}
+.nav-pills .nav-link.active,
+.nav-pills .nav-link:focus,
+.nav-pills .nav-link.show {
+    background-color: rgb(179, 61, 61) !important;
+    color: white !important;
+}
+.nav-pills .nav-link:hover {
+    background-color: darkred;
+    color: white;
+}
+.nav-pills .nav-link.partida {
+    color: white !important;
+}
+
 /* -------------- ANIMACIONES -------------------- */
 
 /* Animación título del buscador */

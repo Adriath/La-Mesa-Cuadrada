@@ -31,8 +31,8 @@
 
             <div class="col-lg-6 border border-start-0 border-top-0 border-bottom-0 order-1 order-lg-0"> <!-- Aquí se controla el borde separador de ambas columnas -->
 
-                <h1> ESTO ES UNA PRUEBA. ESTOY EN EL HOME LOGADO </h1>
-                <p> Nombre de usuario: <?= $usuario->getNombreUsuario() ?> </p>
+                <h1> ¡QUÉ BIEN VERTE <br> DE NUEVO, <?= $usuario->getNombreUsuario() ?>! </h1>
+                
 
                 <button class='btn btn-light' type='submit'> <a href='logout' class='btn btn-light'> Cerrar sesión </a> </button>
 

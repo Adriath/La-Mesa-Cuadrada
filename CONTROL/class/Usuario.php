@@ -12,43 +12,77 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Respon
  */
 class Usuario extends BBDD implements JsonSerializable{
     
-    private $usuario ;
+    private $idUsuario ;
+    private $nombreUsuario ;
+    private $email ;
     private $password ;
+    private $estado ;
     
-    public function __construct($usuario=null, $password=null) {
+    public function __construct($idUsuario=null, $nombreUsuario, $email, $password) {
         parent::__construct();
-        $this->usuario = $usuario;
+        $this->idUsuario = $idUsuario ;
+        $this->nombreUsuario = $nombreUsuario ;
+        $this->email = $email;
         $this->password = $password;
+        $this->estado = "Activo" ;
     }
     
-    public function getUsuario() {
-        return $this->usuario;
+    public function getIdUsuario() {
+        return $this->idUsuario;
+    }
+
+    public function getNombreUsuario() {
+        return $this->nombreUsuario;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 
     public function getPassword() {
         return $this->password;
     }
 
-    public function setUsuario($usuario): void {
-        $this->usuario = $usuario;
+    public function getEstado() {
+        return $this->estado;
+    }
+
+//    public function setIdUsuario($idUsuario): void {
+//        $this->idUsuario = $idUsuario;
+//    }
+
+    public function setNombreUsuario($nombreUsuario): void {
+        $this->nombreUsuario = $nombreUsuario;
+    }
+
+    public function setEmail($email): void {
+        $this->email = $email;
     }
 
     public function setPassword($password): void {
         $this->password = $password;
     }
 
+    public function setEstado($estado): void {
+        $this->estado = $estado;
+    }
 
+    
     // -------------------- FUNCIONES --------------------------
 
-    public function obtenerUsuario($id = null) // Obtiene usuario por ID o todos
+    public function obtenerUsuario($id = null, $nombreUsuario = null) // Obtiene usuario por ID o todos
     { // Obtiene los datos de un juego
 
         $query = "SELECT * FROM usuario" ;
 
-        if ($id != null) { // Si no se ha introducido ID
-            
+        if ($id != null) // Si se ha introducido ID
+        {     
             $query = "SELECT email,password FROM usuario WHERE id_usuario = $id";
-            }
+        }
+        else if ($nombreUsuario != null) // Si se ha introducido nombre de usuario
+        {
+            $query = "SELECT * FROM usuario WHERE nombreUsuario = $nombreUsuario";
+        }
             
         return parent::obtenerDatos($query);
     }
@@ -57,8 +91,11 @@ class Usuario extends BBDD implements JsonSerializable{
     public function jsonSerialize() {
         
         return [
-            'Usuario' => $this->usuario,
-            'Password' => $this->password
+            'idUsuario' => $this->idUsuario,
+            'nombreUsuario' => $this->nombreUsuario,
+            'email' => $this->email,
+            'password' => $this->password,
+            'estado' => $this->estado
         ] ;
     
     }

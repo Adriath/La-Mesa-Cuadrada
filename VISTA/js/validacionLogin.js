@@ -59,6 +59,9 @@ $('#nombreUsuarioLogin').keyup(function () {
             emailExiste = compruebaEmailLogin(response) ;
             console.log ("emailExiste: " + emailExiste); // Pruebas
 
+            formularioLoginValido = validarFormularioLogin() ;
+            console.log ("Formulario: " + formularioLoginValido); // Pruebas
+
         },
         error: function (xhr, status, error) {
             // Manejar cualquier error que ocurra durante la solicitud
@@ -91,6 +94,9 @@ $('#passwordLogin').keyup(function () {
             passwordExiste = compruebaPasswordLogin(response);
             console.log ("passwordExiste: " + passwordExiste); // Pruebas
             // emailValido = validarEmail();
+
+            formularioLoginValido = validarFormularioLogin() ;
+            console.log ("Formulario: " + formularioLoginValido); // Pruebas
 
 
         },

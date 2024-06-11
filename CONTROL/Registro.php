@@ -309,7 +309,7 @@ function validarFormulario($nombre, $email, $password, $passwordRepetida) {
         $estado = "Activo" ;
     
         $stmt = $conexion->prepare("INSERT INTO usuario (nombreUsuario, email, password, estado) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $nombre, $email, $password, $estado);
+        $stmt->bind_param("ssss", $nombre, strtolower($email), $password, $estado);
     
         if ($stmt->execute()) {
 

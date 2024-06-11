@@ -2,108 +2,110 @@
 
 echo "Estamos en el login.php" ;
 
-// require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
 
 
-// $usuario = $_POST['usuarioLogin'] ;
-// $password = $_POST['passwordLogin'] ;
+$usuario = $_POST['usuarioLogin'] ;
+$password = $_POST['passwordLogin'] ;
 
-// $usuarioExiste = false ;
-// $passwordExiste = false ;
+var_dump($_POST) ;
 
-// $loginCorrecto = false ;
+$usuarioExiste = false ;
+$passwordExiste = false ;
 
-
-// /**
-//  * Comprueba si la contraseña es correcta.
-//  * REQUISITOS:
-//  * - Mínimo 8 caracteres
-//  * - Máximo 15 caracteres
-//  * - Debe contener al menos una mayúscula
-//  * - Debe contener al menos una minúscula
-//  * - Debe contener al menos un dígito
-//  * - No debe contener espacios
-//  * - Debe contener al menos un caracter especial
-//  * 
-//  * @param string $password La contraseña a comprobar.
-//  * @return bool true si la contraseña es correcta, false en caso contrario
-//  */
+$loginCorrecto = false ;
 
 
-// // ----------------- VALIDACIONES CON BBDD -----------------
+/**
+ * Comprueba si la contraseña es correcta.
+ * REQUISITOS:
+ * - Mínimo 8 caracteres
+ * - Máximo 15 caracteres
+ * - Debe contener al menos una mayúscula
+ * - Debe contener al menos una minúscula
+ * - Debe contener al menos un dígito
+ * - No debe contener espacios
+ * - Debe contener al menos un caracter especial
+ * 
+ * @param string $password La contraseña a comprobar.
+ * @return bool true si la contraseña es correcta, false en caso contrario
+ */
 
-// /**
-//  * Comprueba si el usuario ya existe revisando el nombre de usuario y el email en la base de datos.
-//  * 
-//  * @param string $nombre El nombre de usuario introducido por el usuario.
-//  * @param string $email El email introducido por el usuario.
-//  * 
-//  * return bool true si el usuario ya existe, false en caso contrario.
-//  */
-// function compruebaLogin($usuario, $password) {
 
-//     $_conexion = new BBDD() ; // Creamos el objeto conexión
+// ----------------- VALIDACIONES CON BBDD -----------------
 
-//     $valido = false ; // Daremos por hecho que es válido
+/**
+ * Comprueba si el usuario ya existe revisando el nombre de usuario y el email en la base de datos.
+ * 
+ * @param string $nombre El nombre de usuario introducido por el usuario.
+ * @param string $email El email introducido por el usuario.
+ * 
+ * return bool true si el usuario ya existe, false en caso contrario.
+ */
+function compruebaLogin($usuario, $password) {
 
-//     $conexion = $_conexion->getConexion() ;
+    $_conexion = new BBDD() ; // Creamos el objeto conexión
 
-//     // Conectamos con la base de datos
+    $valido = false ; // Daremos por hecho que es válido
 
-//     $stmt = $conexion->prepare("SELECT * FROM usuario WHERE nombreUsuario = ? OR email = ? OR password = ?") ;
-//     $stmt->bind_param("sss", $usuario, $usuario, $password) ;
-//     $stmt->execute() ;
-//     $result = $stmt->get_result() ;
+    $conexion = $_conexion->getConexion() ;
 
-//     if ($result->num_rows > 0) // Si hay resultados
-//     {
+    // Conectamos con la base de datos
 
-//         while ($row = $result->fetch_assoc()){ // Recorremos todos los resultados
+    $stmt = $conexion->prepare("SELECT * FROM usuario WHERE nombreUsuario = ? OR email = ? OR password = ?") ;
+    $stmt->bind_param("sss", $usuario, $usuario, $password) ;
+    $stmt->execute() ;
+    $result = $stmt->get_result() ;
 
-//             if ($row["nombreUsuario"] === $usuario){ // Si el nombre de usuario coincide...
+    if ($result->num_rows > 0) // Si hay resultados
+    {
 
-//                 $usuarioExiste = true ; // ...es válido
-//                 echo "Usuario ya existe" ;
-//             }        
-//             else if ($row["email"] === $usuario){ // Si el email coincide...
+        while ($row = $result->fetch_assoc()){ // Recorremos todos los resultados
 
-//                 $usuarioExiste = true ; // ...es válido
-//                 echo "Email ya existe" ;
-//             }   
+            if ($row["nombreUsuario"] === $usuario){ // Si el nombre de usuario coincide...
 
-//             if ($row["password"] === $password){ // Si la contraseña coincide...
+                $usuarioExiste = true ; // ...es válido
+                echo "Usuario ya existe" ;
+            }        
+            else if ($row["email"] === strtolower($usuario)){ // Si el email coincide...
 
-//                 $passwordExiste = true ; // ...es válida
-//                 echo "Password ya existe" ;
-//             }
-//         }
+                $usuarioExiste = true ; // ...es válido
+                echo "Email ya existe" ;
+            }   
 
-//         if ($usuarioExiste && $passwordExiste){
+            if ($row["password"] === $password){ // Si la contraseña coincide...
 
-//             $valido = true ;
-//         }
+                $passwordExiste = true ; // ...es válida
+                echo "Password ya existe" ;
+            }
+        }
 
-//     }
+        if ($usuarioExiste && $passwordExiste){
 
-//     return $valido ;
-// }
+            $valido = true ;
+        }
 
-// // ----------------- VALIDACIÓN DE FORMULARIO -----------------
+    }
 
-// function hacerLogin($usuario, $password) {
+    return $valido ;
+}
 
-//     $loginCorrecto = compruebaLogin($usuario, $password) ;
+// ----------------- VALIDACIÓN DE FORMULARIO -----------------
+
+function hacerLogin($usuario, $password) {
+
+    $loginCorrecto = compruebaLogin($usuario, $password) ;
     
-//     if ($loginCorrecto){
+    if ($loginCorrecto){
 
-//         echo "Login correcto" ;
-//     }
+        echo "Login correcto" ;
+    }
 
-//     else {
+    else {
 
-//         echo "Login incorrecto" ;
-//     }
+        echo "Login incorrecto" ;
+    }
     
-// }
+}
 
-// hacerLogin($usuario, $password) ;
+hacerLogin($usuario, $password) ;

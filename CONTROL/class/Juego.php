@@ -3,8 +3,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Response.php" ;
 
-class Juego extends BBDD
-{
+class Juego extends BBDD implements JsonSerializable{
 
     private $tabla = "juego";
     private $idJuego = "";
@@ -14,6 +13,97 @@ class Juego extends BBDD
     private $descripcion = "";
     private $minJugadores = "";
     private $maxJugadores = "";
+    private $tutorial = "" ;
+    
+    
+    public function __construct($idJuego=null, $nombre=null, $enlace=null, $imagen=null, $descripcion=null, $minJugadores=null, $maxJugadores=null, $tutorial=null) {
+        
+        parent::__construct() ;
+        $this->idJuego = $idJuego;
+        $this->nombre = $nombre;
+        $this->enlace = $enlace;
+        $this->imagen = $imagen;
+        $this->descripcion = $descripcion;
+        $this->minJugadores = $minJugadores;
+        $this->maxJugadores = $maxJugadores;
+        $this->tutorial = $tutorial;
+    }
+
+    public function getIdJuego() {
+        return $this->idJuego;
+    }
+
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    public function getEnlace() {
+        return $this->enlace;
+    }
+
+    public function getImagen() {
+        return $this->imagen;
+    }
+
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+
+    public function getMinJugadores() {
+        return $this->minJugadores;
+    }
+
+    public function getMaxJugadores() {
+        return $this->maxJugadores;
+    }
+
+    public function getTutorial() {
+        return $this->tutorial;
+    }
+
+    public function setNombre($nombre): void {
+        $this->nombre = $nombre;
+    }
+
+    public function setEnlace($enlace): void {
+        $this->enlace = $enlace;
+    }
+
+    public function setImagen($imagen): void {
+        $this->imagen = $imagen;
+    }
+
+    public function setDescripcion($descripcion): void {
+        $this->descripcion = $descripcion;
+    }
+
+    public function setMinJugadores($minJugadores): void {
+        $this->minJugadores = $minJugadores;
+    }
+
+    public function setMaxJugadores($maxJugadores): void {
+        $this->maxJugadores = $maxJugadores;
+    }
+
+    public function setTutorial($tutorial): void {
+        $this->tutorial = $tutorial;
+    }
+
+        
+     public function jsonSerialize() {
+        
+        return [
+            'idJuego' => $this->idJuego,
+            'nombre' => $this->nombre,
+            'enlace' => $this->enlace,
+            'imagen' => $this->imagen,
+            'descripcion' => $this->descripcion,
+            'minJugadores' => $this->minJugadores,
+            'maxJugadores' => $this->maxJugadores,
+            'tutorial' => $this->tutorial
+        ] ;
+    
+    }
 
     public function listaJuegos($pagina = 1)
     { // Lista los datos de la tabla juego filtrando por la página

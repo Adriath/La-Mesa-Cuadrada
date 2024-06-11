@@ -19,14 +19,14 @@ $('#botonEnviarLogin').click(function () {
 
     // formularioLoginValido = validarFormularioLogin() ;
 
-    // if (formularioLoginValido){
+    if (formularioLoginValido){
 
     $('#formLogin').submit();
-    // }
-    // else
-    // {
-    //     $("#errorFormRegistro").text("CREDENCIALES INCORRECTAS");
-    // }
+    }
+    else
+    {
+        $("#errorFormRegistroLogin").text("CREDENCIALES INCORRECTAS");
+    }
 
 });
 
@@ -53,6 +53,8 @@ $('#nombreUsuarioLogin').keyup(function () {
 
             // Por ejemplo, mostrar los datos en algún lugar de tu página
             // Aquí asumo que tienes un elemento con id="datos" donde deseas mostrar los datos
+
+            $("#errorFormRegistroLogin").empty(); // Vacía el mensaje de error
 
             usuarioExiste = compruebaNombreUsuarioLogin(response);
             console.log ("usuarioExiste: " + usuarioExiste); // Pruebas

@@ -140,6 +140,7 @@
 
                                     </div>
                                     <div class="modal-footer">
+                                        <p class="ms-2 me-auto text-danger" id="errorFormRegistroLogin"> </p>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
                                         <button type="button" class="btn btn-danger" id="botonEnviarLogin"> Enviar </button>
                                     </div>

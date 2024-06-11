@@ -5,6 +5,7 @@ session_start() ;
 echo "Estamos en el login.php" ;
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
 
 
 $usuario = $_POST['usuarioLogin'] ;
@@ -100,7 +101,27 @@ function hacerLogin($usuario, $password) {
     
     if ($loginCorrecto){
 
-        echo "Login correcto" ;
+        $_SESSION["login"] = $usuario ;
+
+        header("Location: http://localhost/La_Mesa_Cuadrada/home") ;
+
+        $_conexion = new BBDD() ; // Creamos el objeto conexión
+
+        $conexion = $_conexion->getConexion() ;
+
+        // Conectamos con la base de datos
+
+        $stmt = $conexion->prepare("SELECT * FROM usuario WHERE nombreUsuario = ? OR email = ?") ;
+        $stmt->bind_param("ss", $usuario, $usuario) ;
+        $stmt->execute() ;
+        $result = $stmt->get_result() ;
+
+        if ($result->num_rows > 0) // Si hay resultados
+        {
+
+            echo "Estoy dentro del manejo de los datos para la sesión. He llegado bien." ;
+
+        }
     }
 
     else {

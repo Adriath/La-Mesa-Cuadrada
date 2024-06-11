@@ -1,8 +1,24 @@
+<?php
+
+session_start() ;
+?>
+
 <!-- MIGAS DE PAN -->
 
 <!-- Las migas de pan no aparecen en esta página porque es la principal -->
 
 <!-- MAIN -->
+
+<?php
+
+if (isset($_SESSION["login"])) 
+{
+    echo 'ESTOY LOGEADO';
+
+    echo "<button class='btn btn-light' type='submit'> <a href='logout' class='btn btn-light'> Cerrar sesión </a> </button>" ;
+}
+
+?>
 
 <main>
 

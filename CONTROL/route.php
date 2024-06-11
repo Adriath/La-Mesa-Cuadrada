@@ -36,6 +36,10 @@ if ($metodo == 'GET') {
                 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/login.php" ;
                 break;
 
+            case "logout":
+                require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/logout.php" ;
+                break;
+
             case "partida":
                 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/area_juego.php" ;
                 break;

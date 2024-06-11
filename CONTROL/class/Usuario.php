@@ -18,13 +18,13 @@ class Usuario extends BBDD implements JsonSerializable{
     private $password ;
     private $estado ;
     
-    public function __construct($idUsuario=null, $nombreUsuario, $email, $password) {
+    public function __construct($idUsuario=null, $nombreUsuario=null, $email=null, $password=null, $estado=null) {
         parent::__construct();
         $this->idUsuario = $idUsuario ;
         $this->nombreUsuario = $nombreUsuario ;
         $this->email = $email;
         $this->password = $password;
-        $this->estado = "Activo" ;
+        $this->estado = $estado ;
     }
     
     public function getIdUsuario() {
@@ -73,8 +73,7 @@ class Usuario extends BBDD implements JsonSerializable{
     public function obtenerUsuario($id = null, $nombreUsuario = null) // Obtiene usuario por ID o todos
     { // Obtiene los datos de un juego
 
-        $query = "SELECT * FROM usuario" ;
-
+        
         if ($id != null) // Si se ha introducido ID
         {     
             $query = "SELECT email,password FROM usuario WHERE id_usuario = $id";
@@ -82,6 +81,10 @@ class Usuario extends BBDD implements JsonSerializable{
         else if ($nombreUsuario != null) // Si se ha introducido nombre de usuario
         {
             $query = "SELECT * FROM usuario WHERE nombreUsuario = $nombreUsuario";
+        }
+        else
+        {
+            $query = "SELECT * FROM usuario" ;
         }
             
         return parent::obtenerDatos($query);

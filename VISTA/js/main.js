@@ -5,7 +5,7 @@ function desaparecePlaceholder() {
     $('#buscador').focus(function () {
         $(this).attr('placeholder', '');
     }).blur(function () {
-        $(this).attr('placeholder', 'ㄟ( ▔, ▔ )ㄏ');
+        $(this).attr('placeholder', 'ㄟ( ▔, ▔ )ㄏ ¿No ibas a poner algo?');
     });
 }
 

@@ -130,12 +130,12 @@
                                         <form action="login" method="POST" id="formLogin">
                                             <div class="form-floating mb-3">
                                                 <input type="email" class="form-control" id="nombreUsuarioLogin" placeholder="name@example.com" name="usuarioLogin">
-                                                <label for="nombreUsuarioLogin">Email address</label>
+                                                <label for="nombreUsuarioLogin"> Usuario / correo electrónico </label>
                                                 <p id="nombreUsuarioLoginError" class="form-text text-danger"></p>
                                             </div>
                                             <div class="form-floating">
                                                 <input type="password" class="form-control" id="passwordLogin" placeholder="Password" name="passwordLogin">
-                                                <label for="passwordLogin">Password</label>
+                                                <label for="passwordLogin"> Contraseña </label>
                                                 <p id="passwordLoginError" class="form-text text-danger"></p>
                                             </div>
                                         </form>

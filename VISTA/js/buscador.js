@@ -70,7 +70,7 @@ $(document).ready(function (){
     Al carcar el documento, mediante al Ajax se carga al json de prueba. A través de un escuchador de pulsación 
     hace algo. Ese algo será la comprobación de lo escrito con lo que hay en el json.*/
 
-function haceAlgo() {
+function haceAlgo() { // Pendiente a cambiarle el nombre
 
     window.location.href = 'http://localhost/La_Mesa_Cuadrada/buscador?resultado=' + textoUsuario + '&encontrado=' + coincidenciaEncontrada ;
 }

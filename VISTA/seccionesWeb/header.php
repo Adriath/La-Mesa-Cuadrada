@@ -11,6 +11,7 @@ if (isset($_GET["pagina"])) {
         case "tuki":
 
             // require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/seccionesWeb/" . $_GET["pagina"] . ".php" ;
+            require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/partida/" . $_GET["pagina"] . "/obtenerDatosPartida.php" ;
             break;
     }
 }

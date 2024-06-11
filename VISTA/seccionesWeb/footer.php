@@ -64,6 +64,21 @@ crossorigin="anonymous"></script>
 <script src='VISTA/js/validacionRegistro.js'></script>
 <script src='VISTA/js/validacionLogin.js'></script>
 
+<?php
+
+if (isset($_GET["pagina"])) {
+
+    switch ($_GET["pagina"]) {
+
+        case "tuki":
+
+            echo "<script src='http://localhost/La_Mesa_Cuadrada/VISTA/js/juego/" . $_GET["pagina"] .".js'></script>" ;
+            break;
+    }
+}
+
+?>
+
 </body>
 
 </html>

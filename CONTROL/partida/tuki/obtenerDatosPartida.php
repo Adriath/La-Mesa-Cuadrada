@@ -11,4 +11,4 @@ if (isset($_GET['pagina'])) {
     $enlace = $_GET['pagina'] ;
 }
 
-$juego = ModeloJuego::obtenerJuego($enlace) ;
+$juego = ModeloJuego::obtenerJuego($enlace) ; // Obtenemos objeto de tipo Juego

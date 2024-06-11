@@ -2,7 +2,7 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
 
-echo "Esta es la página Login.php" ;
+echo "Esta es la página registro.php" ;
 
 var_dump($_POST) ;
 
@@ -304,12 +304,12 @@ function validarFormulario($nombre, $email, $password, $passwordRepetida) {
 
         $conexion = $_conexion->getConexion();
 
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT); // Hashear la contraseña antes de guardarla
+        // $passwordHash = password_hash($password, PASSWORD_DEFAULT); // Hashear la contraseña antes de guardarla
 
         $estado = "Activo" ;
     
         $stmt = $conexion->prepare("INSERT INTO usuario (nombreUsuario, email, password, estado) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $nombre, $email, $passwordHash, $estado);
+        $stmt->bind_param("ssss", $nombre, $email, $password, $estado);
     
         if ($stmt->execute()) {
 

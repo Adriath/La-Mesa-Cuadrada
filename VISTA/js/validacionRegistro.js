@@ -16,7 +16,7 @@ function enviarFormularioRegistro() {
     
     $('#botonEnviarRegistro').click(function () {
 
-            
+        
         if (formularioValido){
 
             $('#formRegistro').submit();
@@ -141,7 +141,7 @@ $('#passwordRepetidoSesion').keyup(function () {
     passwordRepetirValido = validarRepetirPassword() ;
 })
 
-// $('#nombreUsuario, #emailSesion, #passwordSesion, #passwordRepetidoSesion').on('keyup', validarFormulario) ;
+// $('#nombreUsuario, #emailSesion, #passwordSesion, #passwordRepetidoSesion').on('input', validarFormulario) ;
 
 
 // -------------- MÉTODOS AUXILIARES -----------------

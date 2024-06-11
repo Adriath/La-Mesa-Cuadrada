@@ -120,26 +120,28 @@
                                     </div>
                                     <div class="modal-body">
 
-                                        <!-- FORMULARIO DE REGISTRO -->
+                                        <!-- FORMULARIO DE LOGIN -->
 
                                         <!-- De momento es un ejemplo. El botón de envío estará fuerad el formulario (ahora mismo no hay etiquetas form).
                                         El botón se puede asociar con JavaScript de manera sencilla aunque esté fuera de las etiquetas. -->
 
-                                        <form action="">
+                                        <form action="login" method="POST" id="formLogin">
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingInput">Email address</label>
+                                                <input type="email" class="form-control" id="nombreUsuarioLogin" placeholder="name@example.com" name="usuarioLogin">
+                                                <label for="nombreUsuarioLogin">Email address</label>
+                                                <p id="nombreUsuarioLoginError" class="form-text text-danger"></p>
                                             </div>
                                             <div class="form-floating">
-                                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                                <label for="floatingPassword">Password</label>
+                                                <input type="password" class="form-control" id="passwordLogin" placeholder="Password" name="passwordLogin">
+                                                <label for="passwordLogin">Password</label>
+                                                <p id="passwordLoginError" class="form-text text-danger"></p>
                                             </div>
                                         </form>
 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cerrar </button>
-                                        <button type="button" class="btn btn-danger"> Enviar </button>
+                                        <button type="button" class="btn btn-danger" id="botonEnviarLogin"> Enviar </button>
                                     </div>
                                 </div>
                             </div>

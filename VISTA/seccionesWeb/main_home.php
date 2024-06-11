@@ -6,27 +6,6 @@
 
 <!-- MAIN -->
 
-<?php
-
-require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
-
-if (isset($_SESSION["login"])) 
-{
-
-    if ($_SESSION["usuario"]){
-        
-        // var_dump($_SESSION["usuario"]) ;
-        
-        $usuario = $_SESSION["usuario"] ;
-
-        echo '<h1> Bienvenido ' . $usuario->getNombreUsuario() . ' </h1>' ;
-    }
-
-    echo "<button class='btn btn-light' type='submit'> <a href='logout' class='btn btn-light'> Cerrar sesión </a> </button>" ;
-}
-
-?>
-
 <main>
 
     <div class="container">

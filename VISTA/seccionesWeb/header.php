@@ -2,6 +2,8 @@
 
 session_start() ;
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/CONTROL/class/Usuario.php" ;
+
 ?>
 
 
@@ -28,7 +30,7 @@ session_start() ;
 
         <!-- BARRA DE NAVEGACIÓN -->
 
-        <nav class="navbar bg-body-tertiary">
+        <nav class="navbar bg-body-tertiary mb-3">
 
             <div class="container">
 

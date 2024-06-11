@@ -9,4 +9,4 @@ session_unset() ;
 
 session_destroy() ;
 
-header("Location: http://localhost/La_Mesa_Cuadrada/home") ;
+header("Location: http://localhost/La_Mesa_Cuadrada/home?logout") ;

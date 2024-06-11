@@ -60,9 +60,8 @@ if ($metodo == 'GET') {
             echo "ERROR 404. PÁgina no encontrada";
                 break;
         }
-    } else {
-        require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/VISTA/home.php" ;
-    }
+       
+    } 
     
 }
 else if ($metodo == 'POST') {

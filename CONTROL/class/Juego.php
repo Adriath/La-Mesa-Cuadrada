@@ -15,8 +15,6 @@ class Juego extends BBDD
     private $minJugadores = "";
     private $maxJugadores = "";
 
-    private $token = "";
-
     public function listaJuegos($pagina = 1)
     { // Lista los datos de la tabla juego filtrando por la página
 
@@ -35,6 +33,7 @@ class Juego extends BBDD
         return $datos;
     }
 
+
     public function obtenerJuego($id)
     { // Obtiene los datos de un juego
 
@@ -50,52 +49,38 @@ class Juego extends BBDD
         $_respuesta = new Response();
         $datos = json_decode($json, true);
 
-        if (!isset($datos['token'])) {
-            // No existe el token
 
-            return $_respuesta->error_401();
-        } else {
+            if (!isset($datos["nombre"]) || !isset($datos["enlace"]) || !isset($datos["imagen"]) || !isset($datos["minJugadores"]) || !isset($datos["maxJugadores"])) {
+                // Si faltan datos
 
-            $this->token = $datos['token'];
-            $arrayToken = $this->buscarToken();
-
-            if ($arrayToken) {
-
-                if (!isset($datos["nombre"]) || !isset($datos["enlace"]) || !isset($datos["imagen"]) || !isset($datos["minJugadores"]) || !isset($datos["maxJugadores"])) {
-                    // Si faltan datos
-
-                    return $_respuesta->error_400();
-                } else {
-                    // Todo esta bien
-
-                    $this->nombre = $datos["nombre"];
-                    $this->enlace = $datos["enlace"];
-                    $this->imagen = $datos["imagen"];
-                    $this->descripcion = $datos["descripcion"];
-                    $this->minJugadores = $datos["minJugadores"];
-                    $this->maxJugadores = $datos["maxJugadores"];
-                    // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
-
-                    $resp = $this->insertarJuego();
-
-                    if ($resp) {
-
-                        $respuesta = $_respuesta->response;
-                        $respuesta["result"] = array(
-                            "id_juego" => $resp
-                        );
-
-                        return $respuesta;
-                    } else {
-
-                        $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
-                    }
-                }
+                return $_respuesta->error_400();
             } else {
+                // Todo esta bien
 
-                return $_respuesta->error_401("El token que envió es inválido o ha caducado");
+                $this->nombre = $datos["nombre"];
+                $this->enlace = $datos["enlace"];
+                $this->imagen = $datos["imagen"];
+                $this->descripcion = $datos["descripcion"];
+                $this->minJugadores = $datos["minJugadores"];
+                $this->maxJugadores = $datos["maxJugadores"];
+                // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
+
+                $resp = $this->insertarJuego();
+
+                if ($resp) {
+
+                    $respuesta = $_respuesta->response;
+                    $respuesta["result"] = array(
+                        "id_juego" => $resp
+                    );
+
+                    return $respuesta;
+                } else {
+
+                    $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
+                }
+           
             }
-        }
     }
 
 
@@ -123,55 +108,40 @@ class Juego extends BBDD
         $_respuesta = new Response();
         $datos = json_decode($json, true);
 
-        if (!isset($datos['token'])) {
-            // No existe el token
+        if (!isset($datos["id_juego"])) {
+            // Si faltan datos
 
-            return $_respuesta->error_401();
+            return $_respuesta->error_400();
         } else {
+            // Todo esta bien
 
-            $this->token = $datos['token'];
-            $arrayToken = $this->buscarToken();
+            if (isset($datos['id_juego'])) {
+                $this->idJuego = $datos['id_juego'];
+            }
+            $this->nombre = $datos["nombre"];
+            $this->enlace = $datos["enlace"];
+            $this->imagen = $datos["imagen"];
+            $this->descripcion = $datos["descripcion"];
+            $this->minJugadores = $datos["minJugadores"];
+            $this->maxJugadores = $datos["maxJugadores"];
+            // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
 
-            if ($arrayToken) {
+            $resp = $this->modificarJuego();
 
-                if (!isset($datos["id_juego"])) {
-                    // Si faltan datos
+            if ($resp) {
 
-                    return $_respuesta->error_400();
-                } else {
-                    // Todo esta bien
+                $respuesta = $_respuesta->response;
+                $respuesta["result"] = array(
+                    "id_juego" => $this->idJuego
+                );
 
-                    if (isset($datos['id_juego'])) {
-                        $this->idJuego = $datos['id_juego'];
-                    }
-                    $this->nombre = $datos["nombre"];
-                    $this->enlace = $datos["enlace"];
-                    $this->imagen = $datos["imagen"];
-                    $this->descripcion = $datos["descripcion"];
-                    $this->minJugadores = $datos["minJugadores"];
-                    $this->maxJugadores = $datos["maxJugadores"];
-                    // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
-
-                    $resp = $this->modificarJuego();
-
-                    if ($resp) {
-
-                        $respuesta = $_respuesta->response;
-                        $respuesta["result"] = array(
-                            "id_juego" => $this->idJuego
-                        );
-
-                        return $respuesta;
-                    } else {
-
-                        $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
-                    }
-                }
+                return $respuesta;
             } else {
 
-                return $_respuesta->error_401("El token que envió es inválido o ha caducado");
+                $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
             }
         }
+     
     }
 
 
@@ -200,51 +170,36 @@ class Juego extends BBDD
         $_respuesta = new Response();
         $datos = json_decode($json, true);
 
-        if (!isset($datos['token'])) {
-            // No existe el token
+       
+        if (!isset($datos["id_juego"])) {
+            // Si faltan datos
 
-            return $_respuesta->error_401();
+            return $_respuesta->error_400();
         } else {
+            // Todo esta bien
 
-            $this->token = $datos['token'];
-            $arrayToken = $this->buscarToken();
+            if (isset($datos['id_juego'])) {
+                $this->idJuego = $datos['id_juego'];
+            }
 
-            if ($arrayToken) {
+            // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
 
+            $resp = $this->eliminarJuego();
 
-                if (!isset($datos["id_juego"])) {
-                    // Si faltan datos
+            if ($resp) {
 
-                    return $_respuesta->error_400();
-                } else {
-                    // Todo esta bien
+                $respuesta = $_respuesta->response;
+                $respuesta["result"] = array(
+                    "id_juego" => $this->idJuego
+                );
 
-                    if (isset($datos['id_juego'])) {
-                        $this->idJuego = $datos['id_juego'];
-                    }
-
-                    // if(isset($datos['maxJugadores'])) {$this->maxJugadores = $datos['maxJugadores'] ;} // Para evitar errores
-
-                    $resp = $this->eliminarJuego();
-
-                    if ($resp) {
-
-                        $respuesta = $_respuesta->response;
-                        $respuesta["result"] = array(
-                            "id_juego" => $this->idJuego
-                        );
-
-                        return $respuesta;
-                    } else {
-
-                        $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
-                    }
-                }
+                return $respuesta;
             } else {
 
-                return $_respuesta->error_401("El token que envió es inválido o ha caducado");
+                $_respuesta->error_500("Error interno, no hemos podido insertar el juego");
             }
         }
+            
     }
 
 
@@ -264,37 +219,4 @@ class Juego extends BBDD
         }
     }
 
-    private function buscarToken()
-    {
-
-        // $query = "SELECT id_token,id_usuario,estado FROM usuarios_token WHERE token=$this->token AND estado='Activo'" ;
-        $query = "SELECT id_token, id_usuario, estado FROM usuarios_token WHERE token='$this->token' AND estado='Activo'";
-
-
-        $resp = parent::obtenerDatos($query);
-
-        if ($resp) {
-            return $resp;
-        } else {
-            return 0;
-        }
-    }
-
-    private function actualizarToken($idToken)
-    {
-
-        $date = date("Y-m-d H:i"); // Obtener fecha actual
-
-        $query = "UPDATE usuarios_token" . " SET fecha = '$date' WHERE id_token = $idToken";
-
-        $resp = parent::nonQuery($query);
-
-        if ($resp >= 1) {
-
-            return $resp;
-        } else {
-
-            return 0;
-        }
-    }
 }

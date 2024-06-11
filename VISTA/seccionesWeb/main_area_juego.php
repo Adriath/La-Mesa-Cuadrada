@@ -13,7 +13,7 @@
 
 <main>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <nav id="areaJuego" class="navbar bg-body-tertiary px-3 mb-3">
             <a class="navbar-brand pe-none" href="#">Navbar</a>

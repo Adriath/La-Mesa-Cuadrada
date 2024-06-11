@@ -67,7 +67,27 @@ session_start() ;
                     <ul class="list-unstyled">
                         <li>
                             <i class="bi bi-people">
-                                <span class="d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#areaRegistro"> Regístrate </span>
+
+                            <?php
+
+                            if (isset($_SESSION["login"])) {
+
+                                if (isset($_SESSION["usuario"])) {
+                                    
+
+                                    $usuario = $_SESSION["usuario"] ;
+
+                                    echo '<span class="d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#areaRegistro"> Tu cuenta </span>' ;
+
+                                }
+                            }
+                            else
+                            {
+                                echo '<span class="d-none d-lg-inline" data-bs-toggle="modal" data-bs-target="#areaRegistro"> Regístrate </span>' ;
+                            }
+
+                            ?>
+
                             </i> 
                         </li>
                         <li>

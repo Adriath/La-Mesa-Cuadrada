@@ -2,6 +2,7 @@
 
 session_start() ;
 
+
 echo "Estamos en el login.php" ;
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/La_Mesa_Cuadrada/MODELO/BBDD.php" ;
@@ -101,9 +102,7 @@ function hacerLogin($usuario, $password) {
     
     if ($loginCorrecto){
 
-        $_SESSION["login"] = $usuario ;
-
-        header("Location: http://localhost/La_Mesa_Cuadrada/home") ;
+        $_SESSION["login"] = true ;
 
         $_conexion = new BBDD() ; // Creamos el objeto conexión
 
@@ -118,10 +117,21 @@ function hacerLogin($usuario, $password) {
 
         if ($result->num_rows > 0) // Si hay resultados
         {
+            $usuarioData = $result->fetch_assoc(); // Obtener los datos como un array asociativo
 
-            echo "Estoy dentro del manejo de los datos para la sesión. He llegado bien." ;
+            // Crear un objeto Usuario
+            $usuarioObjeto = new Usuario(
+                $usuarioData['id_usuario'],
+                $usuarioData['nombreUsuario'],
+                $usuarioData['email'],
+                $usuarioData['estado']
+            );
 
+            // Guardar el objeto en la sesión
+            $_SESSION['usuario'] = $usuarioObjeto ;
         }
+
+        header("Location: http://localhost/La_Mesa_Cuadrada/home") ;
     }
 
     else {
